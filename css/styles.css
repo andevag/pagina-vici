@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*===Variables===*/
+:root {
+    --color-negro: #111111;
+    --color-blanco: #ffffff;
+    --color-dorado: #C9A227;
+    --color-gris: #F4F4F4;
+    --color-rojo: #FF0000;
+}
+
+/* ===== ESTILOS GENERALES ===== */
+body{
+    font-family: Arial, sans-serif;
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 80px;
+
+    background-color: var(--color-negro);
+}
+
+.logo h1{
+    color: var(--color-blanco);
+    font-size: 2rem; /*<---32PX*/
+    letter-spacing: 7px;
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: var(--color-blanco);
+    font-size: 1rem; /*<---16PX*/
+    transition: color 1s ease;
+}
+
+.nav-links a:hover{
+    color: var(--color-dorado);
+    text-shadow: 0 0 5px var(--color-rojo);
+}
+
+.btn-nav{
+    text-decoration: none;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover{
+    background-color: var(--color-blanco);
+    transform: translateY(-2px);
+}
+
