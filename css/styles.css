@@ -178,3 +178,70 @@ body{
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+/* ===================================
+            RESPONSIVE
+=================================== */
+
+@media (max-width: 768px){
+
+    /* ===== NAVBAR ===== */
+
+    .navbar{
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .logo h1{
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+    }
+
+    .nav-links{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .btn-nav{
+        padding: 10px 20px;
+    }
+
+    /* ===== HERO ===== */
+
+    .hero{
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+
+        padding: 180px 30px 60px;
+        gap: 40px;
+
+        min-height: auto;
+    }
+
+    .hero-content{
+        padding: 0 10px;
+    }
+
+    .hero-content h2{
+        font-size: 2rem;
+    }
+
+    .hero-content p{
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .hero-image{
+        margin-top: 20px;
+    }
+
+    .hero-image img{
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
