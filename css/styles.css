@@ -244,4 +244,125 @@ body{
         max-width: 320px;
     }
 
+
+}
+
+/* ===PRODUCTOS DESTACADOS=== */
+.products{
+    padding: 80px;
+    background-color: #111111;
+}
+
+.section-title{
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-dorado);
+    margin-bottom: 15px;
+}
+
+.section-line{
+    width: 120px;
+    height: 3px;
+    background: var(--color-dorado);
+    margin: 0 auto 60px;
+    border-radius: 50px;
+}
+
+.products-container{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.product-card{
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 20px;
+    padding: 25px;
+
+    width: 320px;
+
+    text-align: center;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.product-card:hover{
+    transform: translateY(-10px) scale(1.02);
+
+    box-shadow: 0 15px 35px rgba(201,162,39,.18);
+    border-color: rgba(201,162,39,.35);
+}
+
+.product-card img{
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+}
+
+.product-card h3{
+    color: var(--color-blanco);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.product-type{
+    color: var(--color-dorado);
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.product-description{
+    color: #d0d0d0;
+    font-size: .95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.product-price{
+    color: var(--color-dorado);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px 0;
+}
+
+.btn-product{
+    display: inline-block;
+    width: 70%;
+
+    text-decoration: none;
+
+    background-color: var(--color-dorado);
+    color: var(--color-negro);
+
+    padding: 16px 35px;
+    font-size: 1rem;
+
+    border-radius: 40px;
+
+    font-weight: bold;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background-color .3s ease;
+}
+
+.btn-product:hover{
+    transform: translateY(-3px);
+
+    background-color: #d8b13b;
+
+    box-shadow: 0 8px 18px rgba(201,162,39,.4);
 }
