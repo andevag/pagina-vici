@@ -179,9 +179,7 @@ body{
     letter-spacing: 2px;
 }
 
-/* ===================================
-            RESPONSIVE
-=================================== */
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px){
 
@@ -208,6 +206,7 @@ body{
     .btn-nav{
         padding: 10px 20px;
     }
+
 
     /* ===== HERO ===== */
 
@@ -244,6 +243,86 @@ body{
         max-width: 320px;
     }
 
+
+    /* ===== PRODUCTOS ===== */
+
+    .products{
+        padding: 70px 25px;
+    }
+
+    .section-title{
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .products-container{
+        gap: 25px;
+    }
+
+    .product-card{
+        width: 100%;
+        max-width: 350px;
+    }
+
+
+    /* ===== BENEFICIOS ===== */
+
+    .benefits{
+        padding: 70px 25px;
+    }
+
+    .benefits-container{
+        gap: 25px;
+    }
+
+    .benefit-card{
+        width: 100%;
+        max-width: 350px;
+    }
+
+
+    /* ===== SOBRE VICI ===== */
+
+    .about{
+        padding: 70px 25px;
+    }
+
+    .about-content{
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .about-text p{
+        font-size: 1rem;
+    }
+
+    .about-image img{
+        max-width: 320px;
+    }
+
+
+    /* ===== FOOTER ===== */
+
+    .footer{
+        padding: 60px 25px 25px;
+    }
+
+    .footer-content{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .footer-brand{
+        max-width: 350px;
+    }
+
+    .footer-links,
+    .footer-contact{
+        align-items: center;
+    }
 
 }
 
