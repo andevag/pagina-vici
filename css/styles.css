@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
+section,
+    #contacto{
+    scroll-margin-top: 100px;
+}
+
 /*===Variables===*/
 :root {
     --color-negro: #000000ee;
@@ -393,7 +402,7 @@ body{
     margin-bottom: 8px;
 }
 
-.product-type{
+.type-product{
     color: var(--color-dorado);
     font-size: .9rem;
     text-transform: uppercase;
@@ -413,7 +422,7 @@ body{
     color: var(--color-dorado);
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 20px 0;
+    margin-bottom: 20px;
 }
 
 .btn-product{
@@ -564,7 +573,7 @@ body{
     padding-bottom: 50px;
 }
 
-footer-brand{
+.footer-brand{
     max-width: 300px;
 }
 
@@ -580,7 +589,7 @@ footer-brand{
     line-height: 1.6;
 }
 
-.footer-link,
+.footer-links,
 .footer-contact{
     display: flex;
     flex-direction: column;
@@ -621,4 +630,24 @@ footer-brand{
 .footer-bottom p{
     color: #888;
     font-size: .85rem;
+}
+
+/* ===== ANIMACIONES ===== */
+
+.product-card,
+.benefit-card,
+.about-content{
+    opacity: 0;
+    transform: translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.product-card.visible,
+.benefit-card.visible,
+.about-content.visible{
+    opacity: 1;
+    transform: translateY(0);
 }
