@@ -23,14 +23,14 @@ section,
 ========================================================= */
 
 :root {
-    --color-negro: #000000;
+    --color-negro: #000000c7;
     --color-blanco: #ffffff;
-    --color-dorado: #C9A227;
+    --color-negrotwo: #050505;
 
     --color-texto: #d5d5d5;
     --color-texto-suave: #bdbdbd;
 
-    --color-borde: rgba(255, 255, 255, 0.08);
+    --color-borde: rgba(255, 255, 255, 0.748);
 }
 
 
@@ -40,41 +40,52 @@ section,
 
 body {
     font-family: Arial, sans-serif;
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
-    /* Fondo general de toda la página */
     background:
-        radial-gradient(
-            circle at 85% 15%,
-            rgba(201, 162, 39, 0.12),
-            transparent 30%
-        ),
+        /* Fondo base */
         linear-gradient(
             135deg,
-            #0d0d0d 0%,
-            #111111 50%,
-            #1a1a1a 100%
+            #ffffff  0%,
+            #ffffff  50%,
+            #ffffff 100%    
         );
 
     background-attachment: fixed;
     background-size: cover;
-
+    margin: 0;
     min-height: 100vh;
 }
-
 
 /* =========================================================
    NAVBAR
 ========================================================= */
 
+
+
+/* ------------------------------------------------------------------------------------------------- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    /* Mantiene las dimensiones exactas originales */
     padding: 20px 80px;
 
-    background-color: rgba(0, 0, 0, 0.92);
+    /* Copiado exacto del fondo del footer */
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.274),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #68686892 0%,
+            #68686892 45%,
+            #68686892 70%,
+            #68686892 100%
+        );
 
     position: fixed;
     top: 0;
@@ -84,9 +95,12 @@ body {
 
     z-index: 1000;
 
-    border-bottom: 1px solid rgba(201, 162, 39, 0.08);
-}
+    /* Adaptado a borde inferior metálico */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 
+    /* Opcional: Sombra hacia abajo para dar el mismo relieve que el footer */
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
 
 /* LOGO */
 
@@ -132,7 +146,7 @@ body {
 .btn-nav {
     text-decoration: none;
 
-    color: var(--color-negro);
+    color: var(--color-blanco);
 
     background-color: var(--color-dorado);
 
@@ -146,7 +160,7 @@ body {
 }
 
 .btn-nav:hover {
-    background-color: var(--color-blanco);
+    background-color: var(--color-negro);
 
     transform: translateY(-2px);
 
@@ -189,7 +203,7 @@ body {
 
     margin-bottom: 20px;
 
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     line-height: 1.1;
 }
@@ -201,7 +215,7 @@ body {
 
     margin-bottom: 30px;
 
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     max-width: 600px;
 }
@@ -232,16 +246,16 @@ body {
         background-color 0.3s ease;
 
     box-shadow:
-        0 5px 15px rgba(201, 162, 39, 0.35);
+        0 5px 15px rgba(121, 121, 121, 0.35);
 }
 
 .btn-hero:hover {
     transform: translateY(-4px) scale(1.03);
 
-    background-color: #d8b13b;
-
+    background-color: #010101;
+    color: var(--color-blanco);
     box-shadow:
-        0 12px 25px rgba(201, 162, 39, 0.5);
+        0 12px 25px rgba(2, 2, 2, 0.5);
 }
 
 
@@ -306,7 +320,7 @@ body {
 
     font-size: 2.5rem;
 
-    color: var(--color-dorado);
+    color: var(--color-negro);
 
     margin-bottom: 15px;
 }
@@ -316,7 +330,7 @@ body {
 
     height: 3px;
 
-    background: var(--color-dorado);
+    background: var(--color-negro);
 
     margin: 0 auto 50px;
 
@@ -360,7 +374,7 @@ body {
 .product-card {
     width: 300px;
 
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(234, 232, 232, 0.8);
 
     border: 1px solid var(--color-borde);
 
@@ -407,7 +421,7 @@ body {
 /* NOMBRE */
 
 .product-card h3 {
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     font-size: 1.5rem;
 
@@ -418,7 +432,7 @@ body {
 /* TIPO */
 
 .type-product {
-    color: var(--color-dorado);
+    color: var(--color-negro);
 
     font-size: 0.85rem;
 
@@ -435,7 +449,7 @@ body {
 /* DESCRIPCIÓN */
 
 .product-description {
-    color: var(--color-texto);
+    color: var(--color-negro);
 
     font-size: 0.9rem;
 
@@ -448,7 +462,7 @@ body {
 /* PRECIO */
 
 .product-price {
-    color: var(--color-dorado);
+    color: #686868;
 
     font-size: 1.7rem;
 
@@ -467,7 +481,7 @@ body {
 
     text-decoration: none;
 
-    background-color: var(--color-dorado);
+    background-color: #b5b8ba61;
 
     color: var(--color-negro);
 
@@ -488,10 +502,10 @@ body {
 .btn-product:hover {
     transform: translateY(-3px);
 
-    background-color: #d8b13b;
-
+    background-color: #000000;
+    color: var(--color-blanco);
     box-shadow:
-        0 8px 18px rgba(201, 162, 39, 0.4);
+        0 8px 18px rgba(0, 0, 0, 0,);
 }
 
 
@@ -531,7 +545,7 @@ body {
 .benefit-card {
     width: 250px;
 
-    background: rgba(0, 0, 0, 0.35);
+   background: rgba(234, 232, 232, 0.8);
 
     padding: 30px 22px;
 
@@ -553,10 +567,10 @@ body {
     transform: translateY(-8px);
 
     border-color:
-        rgba(201, 162, 39, 0.4);
+        rgba(212, 212, 212, 0.892);
 
     box-shadow:
-        0 15px 30px rgba(201, 162, 39, 0.15);
+        0 15px 30px rgb(199, 198, 198);
 }
 
 
@@ -583,7 +597,7 @@ body {
 .benefit-card p {
     line-height: 1.7;
 
-    color: var(--color-texto);
+    color: var(--color-negro);
 
     font-size: 0.9rem;
 }
@@ -639,7 +653,7 @@ body {
 
     line-height: 1.9;
 
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     margin-bottom: 25px;
 }
@@ -699,10 +713,10 @@ body {
         ),
         linear-gradient(
             135deg,
-            #242424 0%,
-            #4a4a4a 45%,
-            #353535 70%,
-            #1b1b1b 100%
+            #686868 0%,
+            #686868 45%,
+            #686868 70%,
+            #686868 100%
         );
 
     padding: 70px 80px 25px;
