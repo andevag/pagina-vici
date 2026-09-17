@@ -1,195 +1,151 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>MONARQ | El aroma de la victoria</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/tailwind-output.css">
 </head>
-
 <body>
-
     <header>
         <!-- Navbar -->
          <nav class="navbar">
             <div class="logo">
                 <h1>MONARQ</h1>
             </div>
-
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#sobre">Sobre MONARQ</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+               <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="#productos" data-i18n="nav_products">Productos</a></li>
+                <li><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a></li>
+                <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
             </ul>
-
-            <a href="#" class="btn-nav">Comprar</a>
-
+            <a href="#" class="btn-nav" data-i18n="buy">Comprar</a>
+            <div class="language-selector">
+                <button id="lang-es" onclick="changeLanguage('es')">ES</button>
+                <span>/</span>
+                <button id="lang-en" onclick="changeLanguage('en')">EN</button>
+            </div>
          </nav>
     </header>
-
     <main>
         <!-- Hero -->
          <section class="hero" id="inicio">
             <div class="hero-content">
-                <span class="hero-tag">
-                    Fragancias exclusivas
-                </span>
-
-                <h2>El aroma de la victoria</h2>
-
-                <p>
-                    Descubre la esencia de la victoria con MONARQ,
-                    una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.
-                </p>
-
-                <a href="#productos" class="btn-hero">Explorar colección</a>
-                
+                <span class="hero-tag" data-i18n="hero_tag">Fragancias exclusivas </span>
+               <h2 data-i18n="hero_title">El aroma de la victoria</h2>
+               <p data-i18n="hero_description">Descubre la esencia de la victoria con MONARQ,
+                una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.</p>
+                <a href="#productos" class="btn-hero" data-i18n="hero_button">Explorar colección</a>
             </div>
             <div class="hero-image">
-                <img src="assets/images/eclaire.jpg" alt="Perfume MONARQ">
+                <img src="assets/images/logomq.png" alt="Perfume MONARQ">
             </div>
          </section>
-
         <!-- Productos -->
         <section class="products" id="productos">
-
-            <h2 class="section-title">Nuestra Colección</h2>
+            <h2 class="section-title" data-i18n="collection_title">Nuestra Colección</h2>
             <div class="section-line"></div>
-
             <div class="products-container">
-
                 <div class="product-card">
                     <img src="assets/images/eclaire.jpg" alt="Eclaire">
-                    <h3>Eclaire</h3>
-                    <p class="type-product">Floral Fruity Gourmand</p>
-                    <p class="product-description">Una fragancia elegante con notas dulces y envolventes.
-
+                    <h3><strong>Eclaire</strong></h3>
                     </p>
-
                     <p class="product-price">$140.000 COP</p>
-                    <a href="#" class="btn-product">Comprar</a>
+                    <a href="#" class="btn-product"><strong data-i18n="buy">Comprar</strong></a>
                 </div>
-
                 <div class="product-card">
                     <img src="assets/images/yara.jpg" alt="Yara">
-                    <h3>Yara Rosa</h3>
-                    <p class="type-product">Eau de Parfum for women's</p>   
-                    <p class="product-description">Un aroma femenino, delicado y sofisticado para cualquier ocasión.
-
+                    <h3><strong>Yara Rosa</strong></h3>
                     </p>
-
                     <p class="product-price">$130.000 COP</p>
-                    <a href="#" class="btn-product">Comprar</a>
+                    <a href="#" class="btn-product"><strong data-i18n="buy">Comprar</strong></a>
                 </div>
-
                 <div class="product-card">
                     <img src="assets/images/cloudpink.jpg" alt="Cloud_Pink">
-                    <h3>Cloud Pink</h3>
-                    <p class="type-product">Eau de Parfum women's fragrance</p>
-                    <p class="product-description">Una fragancia moderna con un toque dulce y juvenil.
-
+                    <h3><strong>Cloud Pink</strong></h3>
                     </p>
-
                     <p class="product-price">$140.000 COP</p>
-                    <a href="#" class="btn-product">Comprar</a>
+                    <a href="#" class="btn-product"><strong data-i18n="buy">Comprar</strong></a>
                 </div>
-
             </div>
         </section>
-
         <!-- Beneficios -->
         <section class="benefits" id="beneficios">
-            <h2 class="section-title">¿Por qué MONARQ?</h2>
+            <h2 class="section-title" data-i18n="why_monarq">¿Por qué MONARQ?</h2>
             <div class="section-line"></div>
-
             <div class="benefits-container">
                 <div class="benefit-card">
                     <span>✨</span>
-                    <h3>Fragancias Exclusivas</h3>
-                    <p>Seleccionamos perfumes que destacan por su calidad, elegancia y personalidad.</p>
+                    <h3 data-i18n="benefit_exclusive_title">Fragancias Exclusivas</h3>
+                    <p data-i18n="benefit_exclusive_text">Seleccionamos perfumes que destacan por su calidad, elegancia y personalidad.</p>
                 </div>
                 <div class="benefit-card">
                     <span>⏳</span>
-                    <h3>Larga Duración</h3>
-                    <p>Aromas intensos y duraderos para acompañarte durante todo el día.</p>
+                    <h3 data-i18n="benefit_duration_title">Larga Duración</h3>
+                    <p data-i18n="benefit_duration_text"> Aromas intensos y duraderos para acompañarte durante todo el día.</p>
                 </div>
                 <div class="benefit-card">
                     <span>🛍️</span>
-                    <h3>Compra segura</h3>
-                    <p>Atención personalizada y compromiso para que tengas una excelente experiencia.</p>
+                    <h3 data-i18n="benefit_safe_title">Compra segura</h3>
+                    <p data-i18n="benefit_safe_text"> Atención personalizada y compromiso para que tengas una excelente experiencia.</p>
                 </div>
                 <div class="benefit-card">
                     <span>🚚</span>
-                    <h3>Envíos</h3>
-                    <p>Próximamente realizaremos envíos para que recibas tu perfume donde estés.</p>
+                    <h3 data-i18n="benefit_shipping_title">Envíos</h3>
+                    <p data-i18n="benefit_shipping_text">Próximamente realizaremos envíos para que recibas tu perfume donde estés.</p>
                 </div>
             </div>
         </section>
-        
         <!-- Sobre MONARQ -->
          <section class="about" id="sobre">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title">Sobre MONARQ</h2>
+                    <h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2>
                     <div class="section-line"></div>
-
-                    <p>En <strong>MONARQ</strong> creemos que un perfume no solo deja un aroma,
-                    deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, elegancia
-                    y confianza. </p>
-
-                    <p>Nuestra misión es ofrecer perfumes cuidadosamente seleccionados,
-                    combinando calidad, estilo y una excelente atención para que cada
-                    cliente encuentre el aroma perfecto.</p>
-
-                    <a href="#productos" class="btn-hero">Ver Colección</a>
+                    <p data-i18n="about_text_1">En <strong>MONARQ</strong> creemos que un perfume no solo deja un aroma,
+                        deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, 
+                        elegancia y confianza.
+                    </p>
+                    <p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados,
+                        combinando calidad, estilo y una excelente atención para que cadacliente encuentre el aroma perfecto.</p>
+                    <a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a>
                 </div>
                 <div class="about-image">
                     <img src="assets/images/eclaire.jpg" alt="Perfume MONARQ">
                 </div>
             </div>
          </section>
-
         <!-- Contacto/Footer-->
          <footer class="footer">
             <div class="footer-content">
                 <div class="footer-brand">
                     <h2>MONARQ</h2>
-                    <p>
-                        Fragancias que dejan una impresión.
-                    </p>
+                   <p data-i18n="footer_description">Fragancias que dejan una impresión.</p>
                 </div>
                 <div class="footer-links">
-                    <h3>Enlaces</h3>
-                    <a href="#inicio">Inicio</a>
-                    <a href="#productos">Productos</a>
-                    <a href="#sobre">Sobre MONARQ</a>
-                    <a href="#contacto">Contacto</a>
+                    <h3 data-i18n="footer_links">Enlaces</h3>
+                    <a href="#inicio" data-i18n="nav_home">Inicio</a>
+                    <a href="#productos" data-i18n="nav_products">Productos</a>
+                    <a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a>
+                    <a href="#contacto" data-i18n="nav_contact">Contacto</a>
                 </div>
                 <div class="footer-contact" id="contacto">
-                    <h3>Contacto</h3>
+                    <h3 data-i18n="footer_contact">Contacto</h3>
                     <p>WhatsApp</p>
-                   <a href="https://www.instagram.com/vici_perfumes/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="mailto: vici_perfumes@gmail.com">Correo Electroníco</a>
+                    <a href="https://wa.me/573053779384" target="_blank" rel="noopener">+57 305 3155888</a>
+                    <a href="https://www.instagram.com/vici_perfumes/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="mailto:vici_perfumes@gmail.com" data-i18n="email">Correo Electrónico</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>
-                    © 2026 MONARQ. Todos los derechos reservados.
-                </p>
+                <p data-i18n="copyright">© 2026 MONARQ. Todos los derechos reservados.</p>
             </div>
          </footer>
-
     </main>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
-
 </body>
-
 </html>
 
 <!-- COMANDOS GIT
@@ -198,4 +154,3 @@ GIT ADD .
 GIT COMMITT -M "" 
 GIT PUSH ORIGIN MAIN
 
--->

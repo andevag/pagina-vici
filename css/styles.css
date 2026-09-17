@@ -25,12 +25,11 @@ section,
 :root {
     --color-negro: #000000c7;
     --color-blanco: #ffffff;
-    --color-negrotwo: #050505;
-
+    --color-dorado: gold
     --color-texto: #d5d5d5;
     --color-texto-suave: #bdbdbd;
 
-    --color-borde: rgba(255, 255, 255, 0.748);
+    --color-borde: rgba(252, 216, 38, 0.748);
 }
 
 
@@ -105,7 +104,7 @@ body {
 /* LOGO */
 
 .logo h1 {
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     font-size: 2rem;
 
@@ -126,7 +125,7 @@ body {
 .nav-links a {
     text-decoration: none;
 
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     font-size: 1rem;
 
@@ -134,10 +133,10 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--color-dorado);
+    color: var(--color-borde );
 
     text-shadow:
-        0 0 5px var(--color-dorado);
+        0 0 5px var(--color-borde);
 }
 
 
@@ -146,7 +145,7 @@ body {
 .btn-nav {
     text-decoration: none;
 
-    color: var(--color-blanco);
+    color: var(--color-negro);
 
     background-color: var(--color-dorado);
 
@@ -160,7 +159,7 @@ body {
 }
 
 .btn-nav:hover {
-    background-color: var(--color-negro);
+    background-color: var(--color-borde );
 
     transform: translateY(-2px);
 
@@ -228,7 +227,7 @@ body {
 
     text-decoration: none;
 
-    background-color: var(--color-dorado);
+    background-color: rgba(255, 217, 0, 0.775);
 
     color: var(--color-negro);
 
@@ -275,7 +274,7 @@ body {
     width: 100%;
 
     max-width: 500px;
-
+    height: 450px;
     border-radius: 20px;
 
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -448,7 +447,7 @@ body {
 
 /* DESCRIPCIÓN */
 
-.product-description {
+/* .product-description {
     color: var(--color-negro);
 
     font-size: 0.9rem;
@@ -456,13 +455,13 @@ body {
     line-height: 1.6;
 
     margin-bottom: 18px;
-}
+} */
 
 
 /* PRECIO */
 
 .product-price {
-    color: #686868;
+    color: var(--color-negro);
 
     font-size: 1.7rem;
 
@@ -1064,4 +1063,52 @@ body {
     .footer-contact {
         align-items: center;
     }
+}
+
+/* ==============================
+   SELECTOR DE IDIOMA
+   ============================== */
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.language-selector button {
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.language-selector button:hover {
+    color: #111;
+}
+
+.language-selector button.active {
+    color: #111;
+    font-weight: 700;
+}
+
+.language-selector button.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background-color: #111;
+}
+
+.language-selector span {
+    color: #aaa;
+    font-size: 13px;
 }
