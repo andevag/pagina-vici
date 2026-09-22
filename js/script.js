@@ -186,7 +186,7 @@ const productos = [
 
     {
         nombre: "Khamrah Dukhan",
-        imagen: "assets/images/khamradukan.jpg",
+        imagen: "assets/images/khamradukhan.jpg",
         precio: 180000,
         categoria: "category_unisex",
         stock: 2,
@@ -274,18 +274,22 @@ const translations = {
         why_monarq: "¿Por qué MONARQ?",
 
         benefit_exclusive_title: "Fragancias Exclusivas",
+
         benefit_exclusive_text:
             "Seleccionamos perfumes que destacan por su calidad, elegancia y personalidad.",
 
         benefit_duration_title: "Larga Duración",
+
         benefit_duration_text:
             "Aromas intensos y duraderos para acompañarte durante todo el día.",
 
         benefit_safe_title: "Compra segura",
+
         benefit_safe_text:
             "Atención personalizada y compromiso para que tengas una excelente experiencia.",
 
         benefit_shipping_title: "Envíos",
+
         benefit_shipping_text:
             "Próximamente realizaremos envíos para que recibas tu perfume donde estés.",
 
@@ -320,7 +324,15 @@ const translations = {
 
         category_female: "Femenino",
         category_male: "Masculino",
-        category_unisex: "Unisex"
+        category_unisex: "Unisex",
+
+        cart: "Carrito",
+        cart_title: "Tu carrito",
+        cart_empty: "Tu carrito está vacío.",
+        cart_explore: "Explorar productos",
+        cart_summary: "Resumen de compra",
+        cart_total: "Total:",
+        cart_buy: "Comprar por WhatsApp"
     },
 
 
@@ -395,7 +407,15 @@ const translations = {
 
         category_female: "Female",
         category_male: "Male",
-        category_unisex: "Unisex"
+        category_unisex: "Unisex",
+
+        cart: "Cart",
+        cart_title: "Your Cart",
+        cart_empty: "Your cart is empty.",
+        cart_explore: "Explore products",
+        cart_summary: "Order Summary",
+        cart_total: "Total:",
+        cart_buy: "Buy via WhatsApp"
     }
 
 };
@@ -415,20 +435,420 @@ function traducir(key) {
 
 
 // ========================================
-// WHATSAPP
+// CARRITO
 // ========================================
 
-function generarWhatsApp(producto) {
+let carrito =
+    JSON.parse(
+        localStorage.getItem("monarq-carrito")
+    ) || [];
 
-    const numero = "573053779384";
 
-    const precio =
-        producto.precio.toLocaleString("es-CO");
+// ========================================
+// GUARDAR CARRITO
+// ========================================
 
-    const mensaje =
-        `Hola MONARQ, estoy interesado en comprar ${producto.nombre} por $${precio} COP.`;
+function guardarCarrito() {
 
-    return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    localStorage.setItem(
+        "monarq-carrito",
+        JSON.stringify(carrito)
+    );
+
+}
+
+
+// ========================================
+// AGREGAR PRODUCTO AL CARRITO
+// ========================================
+
+function agregarAlCarrito(nombreProducto) {
+
+    const producto =
+        productos.find(
+            producto =>
+                producto.nombre === nombreProducto
+        );
+
+    if (!producto) return;
+
+    if (producto.stock <= 0) return;
+
+
+    const productoCarrito =
+        carrito.find(
+            item =>
+                item.nombre === nombreProducto
+        );
+
+
+    if (productoCarrito) {
+
+        if (
+            productoCarrito.cantidad <
+            producto.stock
+        ) {
+
+            productoCarrito.cantidad++;
+
+        }
+
+    } else {
+
+        carrito.push({
+
+            nombre: producto.nombre,
+
+            imagen: producto.imagen,
+
+            precio: producto.precio,
+
+            stock: producto.stock,
+
+            cantidad: 1
+
+        });
+
+    }
+
+
+    guardarCarrito();
+
+    mostrarCarrito();
+
+}
+
+
+// ========================================
+// CAMBIAR CANTIDAD
+// ========================================
+
+function cambiarCantidad(
+    nombreProducto,
+    cambio
+) {
+
+    const item =
+        carrito.find(
+            producto =>
+                producto.nombre === nombreProducto
+        );
+
+    if (!item) return;
+
+
+    item.cantidad += cambio;
+
+
+    if (item.cantidad <= 0) {
+
+        carrito =
+            carrito.filter(
+                producto =>
+                    producto.nombre !==
+                    nombreProducto
+            );
+
+    }
+
+
+    if (item.cantidad > item.stock) {
+
+        item.cantidad = item.stock;
+
+    }
+
+
+    guardarCarrito();
+
+    mostrarCarrito();
+
+}
+
+
+// ========================================
+// ELIMINAR PRODUCTO
+// ========================================
+
+function eliminarDelCarrito(nombreProducto) {
+
+    carrito =
+        carrito.filter(
+            producto =>
+                producto.nombre !==
+                nombreProducto
+        );
+
+    guardarCarrito();
+
+    mostrarCarrito();
+
+}
+
+
+// ========================================
+// MOSTRAR CARRITO
+// ========================================
+
+function mostrarCarrito() {
+
+    const contenedor =
+        document.getElementById(
+            "cart-products"
+        );
+
+    const vacio =
+        document.getElementById(
+            "cart-empty"
+        );
+
+    const resumen =
+        document.getElementById(
+            "cart-summary"
+        );
+
+    const contador =
+        document.getElementById(
+            "cart-count"
+        );
+
+    const totalElemento =
+        document.getElementById(
+            "cart-total"
+        );
+
+
+    if (!contenedor) return;
+
+
+    contenedor.innerHTML = "";
+
+
+    // ----------------------------------------
+    // CONTADOR
+    // ----------------------------------------
+
+    const cantidadTotal =
+        carrito.reduce(
+            (total, producto) =>
+                total + producto.cantidad,
+            0
+        );
+
+
+    if (contador) {
+
+        contador.textContent =
+            cantidadTotal;
+
+    }
+
+
+    // ----------------------------------------
+    // CARRITO VACÍO
+    // ----------------------------------------
+
+    if (carrito.length === 0) {
+
+        if (vacio) {
+
+            vacio.style.display =
+                "block";
+
+        }
+
+        if (resumen) {
+
+            resumen.style.display =
+                "none";
+
+        }
+
+        return;
+
+    }
+
+
+    if (vacio) {
+
+        vacio.style.display =
+            "none";
+
+    }
+
+
+    if (resumen) {
+
+        resumen.style.display =
+            "block";
+
+    }
+
+
+    // ----------------------------------------
+    // PRODUCTOS
+    // ----------------------------------------
+
+    carrito.forEach(producto => {
+
+        const item =
+            document.createElement("div");
+
+        item.classList.add(
+            "cart-item"
+        );
+
+
+        item.innerHTML = `
+
+            <img
+                src="${producto.imagen}"
+                alt="${producto.nombre}"
+            >
+
+            <div class="cart-item-info">
+
+                <h3>
+                    ${producto.nombre}
+                </h3>
+
+                <p class="cart-item-price">
+                    $${producto.precio.toLocaleString("es-CO")} COP
+                </p>
+
+                <div class="cart-quantity">
+
+                    <button
+                        onclick="cambiarCantidad('${producto.nombre}', -1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${producto.cantidad}
+                    </span>
+
+                    <button
+                        onclick="cambiarCantidad('${producto.nombre}', 1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button
+                class="cart-remove"
+                onclick="eliminarDelCarrito('${producto.nombre}')"
+                title="Eliminar"
+            >
+                🗑️
+            </button>
+
+        `;
+
+
+        contenedor.appendChild(item);
+
+    });
+
+
+    // ----------------------------------------
+    // TOTAL
+    // ----------------------------------------
+
+    const total =
+        carrito.reduce(
+            (suma, producto) =>
+                suma +
+                producto.precio *
+                producto.cantidad,
+            0
+        );
+
+
+    if (totalElemento) {
+
+        totalElemento.textContent =
+            `$${total.toLocaleString("es-CO")} COP`;
+
+    }
+
+}
+
+
+// ========================================
+// COMPRAR CARRITO POR WHATSAPP
+// ========================================
+
+function comprarCarritoWhatsApp() {
+
+    if (carrito.length === 0) {
+        return;
+    }
+
+
+    const numero =
+        "573053779384";
+
+
+    let mensaje =
+        "Hola MONARQ, estoy interesado en comprar:%0A%0A";
+
+
+    carrito.forEach(producto => {
+
+        const subtotal =
+            producto.precio *
+            producto.cantidad;
+
+
+        mensaje +=
+            `• ${producto.nombre} x${producto.cantidad} - $${subtotal.toLocaleString("es-CO")} COP%0A`;
+
+    });
+
+
+    const total =
+        carrito.reduce(
+            (suma, producto) =>
+                suma +
+                producto.precio *
+                producto.cantidad,
+            0
+        );
+
+
+    mensaje +=
+        `%0ATotal: $${total.toLocaleString("es-CO")} COP`;
+
+
+    window.open(
+        `https://wa.me/${numero}?text=${mensaje}`,
+        "_blank"
+    );
+
+}
+
+
+// ========================================
+// BOTÓN WHATSAPP DEL CARRITO
+// ========================================
+
+const botonWhatsApp =
+    document.getElementById(
+        "cart-whatsapp"
+    );
+
+
+if (botonWhatsApp) {
+
+    botonWhatsApp.addEventListener(
+        "click",
+        comprarCarritoWhatsApp
+    );
+
 }
 
 
@@ -438,6 +858,7 @@ function generarWhatsApp(producto) {
 
 let observadorProductos = null;
 
+
 function iniciarAnimaciones() {
 
     const elementos =
@@ -445,38 +866,56 @@ function iniciarAnimaciones() {
             ".product-card, .benefit-card, .about-content"
         );
 
-    if (!("IntersectionObserver" in window)) {
 
-        elementos.forEach(elemento => {
-            elemento.classList.add("visible");
-        });
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        elementos.forEach(
+            elemento => {
+
+                elemento.classList.add(
+                    "visible"
+                );
+
+            }
+        );
 
         return;
+
     }
 
+
     if (observadorProductos) {
+
         observadorProductos.disconnect();
+
     }
+
 
     observadorProductos =
         new IntersectionObserver(
             entradas => {
 
-                entradas.forEach(entrada => {
+                entradas.forEach(
+                    entrada => {
 
-                    if (entrada.isIntersecting) {
+                        if (
+                            entrada.isIntersecting
+                        ) {
 
-                        entrada.target.classList.add(
-                            "visible"
-                        );
+                            entrada.target.classList.add(
+                                "visible"
+                            );
 
-                        observadorProductos.unobserve(
-                            entrada.target
-                        );
+                            observadorProductos.unobserve(
+                                entrada.target
+                            );
+
+                        }
 
                     }
-
-                });
+                );
 
             },
             {
@@ -485,13 +924,16 @@ function iniciarAnimaciones() {
         );
 
 
-    elementos.forEach(elemento => {
+    elementos.forEach(
+        elemento => {
 
-        observadorProductos.observe(
-            elemento
-        );
+            observadorProductos.observe(
+                elemento
+            );
 
-    });
+        }
+    );
+
 }
 
 
@@ -506,14 +948,18 @@ function mostrarProductos() {
             ".products-container"
         );
 
+
     if (!contenedor) return;
 
+
     contenedor.innerHTML = "";
+
 
     productos.forEach(producto => {
 
         const tarjeta =
             document.createElement("div");
+
 
         tarjeta.classList.add(
             "product-card"
@@ -565,18 +1011,14 @@ function mostrarProductos() {
 
                     ? `
 
-                        <a
-                            href="${generarWhatsApp(producto)}"
+                        <button
                             class="btn-product"
-                            target="_blank"
-                            rel="noopener"
+                            onclick="agregarAlCarrito('${producto.nombre}')"
                         >
-
                             <strong>
                                 ${traducir("buy")}
                             </strong>
-
-                        </a>
+                        </button>
 
                     `
 
@@ -586,9 +1028,7 @@ function mostrarProductos() {
                             class="btn-product btn-agotado"
                             disabled
                         >
-
                             ${traducir("product_sold_out")}
-
                         </button>
 
                     `
@@ -604,11 +1044,8 @@ function mostrarProductos() {
     });
 
 
-    // IMPORTANTE:
-    // Volvemos a activar el observador
-    // para las nuevas tarjetas.
-
     iniciarAnimaciones();
+
 }
 
 
@@ -618,8 +1055,10 @@ function mostrarProductos() {
 
 const productosDestacados =
     productos.filter(
-        producto => producto.destacado
+        producto =>
+            producto.destacado
     );
+
 
 let showcaseIndex = 0;
 
@@ -679,6 +1118,7 @@ function mostrarShowcase(index) {
     const producto =
         productosDestacados[index];
 
+
     if (!producto) return;
 
 
@@ -689,6 +1129,7 @@ function mostrarShowcase(index) {
 
         showcaseImage.alt =
             producto.nombre;
+
     }
 
 
@@ -696,6 +1137,7 @@ function mostrarShowcase(index) {
 
         showcaseName.textContent =
             producto.nombre;
+
     }
 
 
@@ -705,6 +1147,7 @@ function mostrarShowcase(index) {
             traducir(
                 producto.categoria
             );
+
     }
 
 
@@ -712,6 +1155,7 @@ function mostrarShowcase(index) {
 
         showcasePrice.textContent =
             `$${producto.precio.toLocaleString("es-CO")} COP`;
+
     }
 
 
@@ -721,6 +1165,7 @@ function mostrarShowcase(index) {
             traducir(
                 producto.etiqueta
             );
+
     }
 
 
@@ -731,10 +1176,22 @@ function mostrarShowcase(index) {
                 "showcase_buy"
             );
 
+
         showcaseButton.href =
-            generarWhatsApp(
-                producto
-            );
+            "#";
+
+
+        showcaseButton.onclick =
+            function(event) {
+
+                event.preventDefault();
+
+                agregarAlCarrito(
+                    producto.nombre
+                );
+
+            };
+
     }
 
 
@@ -742,14 +1199,17 @@ function mostrarShowcase(index) {
         .querySelectorAll(
             ".showcase-dot"
         )
-        .forEach((dot, i) => {
+        .forEach(
+            (dot, i) => {
 
-            dot.classList.toggle(
-                "active",
-                i === showcaseIndex
-            );
+                dot.classList.toggle(
+                    "active",
+                    i === showcaseIndex
+                );
 
-        });
+            }
+        );
+
 }
 
 
@@ -767,6 +1227,7 @@ if (showcaseDots) {
                     "button"
                 );
 
+
             dot.classList.add(
                 "showcase-dot"
             );
@@ -778,6 +1239,7 @@ if (showcaseDots) {
 
                     showcaseIndex =
                         index;
+
 
                     mostrarShowcase(
                         showcaseIndex
@@ -793,6 +1255,7 @@ if (showcaseDots) {
 
         }
     );
+
 }
 
 
@@ -808,6 +1271,7 @@ if (showcaseNext) {
 
             showcaseIndex++;
 
+
             if (
                 showcaseIndex >=
                 productosDestacados.length
@@ -817,12 +1281,14 @@ if (showcaseNext) {
 
             }
 
+
             mostrarShowcase(
                 showcaseIndex
             );
 
         }
     );
+
 }
 
 
@@ -838,6 +1304,7 @@ if (showcasePrev) {
 
             showcaseIndex--;
 
+
             if (
                 showcaseIndex < 0
             ) {
@@ -847,12 +1314,14 @@ if (showcasePrev) {
 
             }
 
+
             mostrarShowcase(
                 showcaseIndex
             );
 
         }
     );
+
 }
 
 
@@ -863,17 +1332,15 @@ if (showcasePrev) {
 function changeLanguage(language) {
 
     if (!translations[language]) {
+
         language = "es";
+
     }
 
-
-    // Cambiar idioma del HTML
 
     document.documentElement.lang =
         language;
 
-
-    // Traducir elementos HTML
 
     const elements =
         document.querySelectorAll(
@@ -881,31 +1348,37 @@ function changeLanguage(language) {
         );
 
 
-    elements.forEach(element => {
+    elements.forEach(
+        element => {
 
-        const key =
-            element.getAttribute(
-                "data-i18n"
-            );
+            const key =
+                element.getAttribute(
+                    "data-i18n"
+                );
 
-        if (
-            translations[language][key]
-        ) {
 
-            element.textContent =
-                translations[language][key];
+            if (
+                translations[language][key]
+            ) {
+
+                element.textContent =
+                    translations[language][key];
+
+            }
 
         }
+    );
 
-    });
 
-
-    // Actualizar botones del idioma
+    // ----------------------------------------
+    // BOTONES DE IDIOMA
+    // ----------------------------------------
 
     const langEs =
         document.getElementById(
             "lang-es"
         );
+
 
     const langEn =
         document.getElementById(
@@ -946,7 +1419,9 @@ function changeLanguage(language) {
     }
 
 
-    // Guardar idioma
+    // ----------------------------------------
+    // GUARDAR IDIOMA
+    // ----------------------------------------
 
     localStorage.setItem(
         "monarq-language",
@@ -954,21 +1429,33 @@ function changeLanguage(language) {
     );
 
 
-    // Volver a generar productos
+    // ----------------------------------------
+    // ACTUALIZAR PRODUCTOS
+    // ----------------------------------------
 
     mostrarProductos();
 
 
-    // Actualizar showcase
+    // ----------------------------------------
+    // ACTUALIZAR SHOWCASE
+    // ----------------------------------------
 
     mostrarShowcase(
         showcaseIndex
     );
+
+
+    // ----------------------------------------
+    // ACTUALIZAR CARRITO
+    // ----------------------------------------
+
+    mostrarCarrito();
+
 }
 
 
 // ========================================
-// INICIAR
+// IDIOMA GUARDADO
 // ========================================
 
 const idiomaGuardado =
@@ -977,39 +1464,55 @@ const idiomaGuardado =
     ) || "es";
 
 
+// ========================================
+// INICIAR
+// ========================================
+
 changeLanguage(
     idiomaGuardado
 );
 
 
 // ========================================
+// INICIAR CARRITO
+// ========================================
+
+mostrarCarrito();
+
+
+// ========================================
 // CAMBIO AUTOMÁTICO DEL SHOWCASE
 // ========================================
 
-setInterval(() => {
+setInterval(
+    () => {
 
-    if (
-        productosDestacados.length === 0
-    ) {
-        return;
-    }
+        if (
+            productosDestacados.length === 0
+        ) {
 
+            return;
 
-    showcaseIndex++;
-
-
-    if (
-        showcaseIndex >=
-        productosDestacados.length
-    ) {
-
-        showcaseIndex = 0;
-
-    }
+        }
 
 
-    mostrarShowcase(
-        showcaseIndex
-    );
+        showcaseIndex++;
 
-}, 5000);
+
+        if (
+            showcaseIndex >=
+            productosDestacados.length
+        ) {
+
+            showcaseIndex = 0;
+
+        }
+
+
+        mostrarShowcase(
+            showcaseIndex
+        );
+
+    },
+    5000
+);

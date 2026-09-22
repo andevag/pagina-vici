@@ -20,7 +20,10 @@
                 <li><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a></li>
                 <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
             </ul>
-            <a href="#" class="btn-nav" data-i18n="buy">Comprar</a>
+            <a href="#carrito" class="btn-nav cart-button" id="cart-button">
+    🛒      <span data-i18n="cart">Carrito</span>
+                 <span id="cart-count">0</span>
+            </a>
             <div class="language-selector">
                 <button id="lang-es" onclick="changeLanguage('es')">ES</button>
                 <span>/</span>
@@ -85,6 +88,62 @@
             <div class="products-container"></div>
 
         </section>
+
+        <!-- CARRITO -->
+        <section class="cart-section" id="carrito">
+
+            <h2 class="section-title" data-i18n="cart_title">
+                Tu carrito
+            </h2>
+
+            <div class="section-line"></div>
+
+            <div id="cart-container">
+
+                <div id="cart-empty">
+                    <p data-i18n="cart_empty">
+                        Tu carrito está vacío.
+                    </p>
+
+                    <a href="#productos"
+                    class="btn-hero"
+                    data-i18n="cart_explore">
+                        Explorar productos
+                    </a>
+                </div>
+
+                <div id="cart-products"></div>
+
+                <div id="cart-summary">
+
+                    <h3 data-i18n="cart_summary">
+                        Resumen de compra
+                    </h3>
+
+                    <p>
+                        <span data-i18n="cart_total">
+                            Total:
+                        </span>
+
+                        <strong id="cart-total">
+                            $0 COP
+                        </strong>
+                    </p>
+
+                    <button
+                        id="cart-whatsapp"
+                        class="btn-product"
+                        data-i18n="cart_buy"
+                    >
+                        Comprar por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
             <!-- Beneficios -->
         <section class="benefits" id="beneficios">
             <h2 class="section-title" data-i18n="why_monarq">¿Por qué MONARQ?</h2>

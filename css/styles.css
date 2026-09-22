@@ -82,8 +82,8 @@ body {
         linear-gradient(
             135deg,
             #26262692 0%,
-            #74737392 45%,
-            #74737392 70%,
+            #65656592 45%,
+            #65656592 70%,
             #26262692 100%
         );
 
@@ -1412,4 +1412,192 @@ body {
     background: #000;
 
     transform: scale(1.4);
+}
+
+/* =========================================================
+   CARRITO
+========================================================= */
+
+.cart-section {
+    padding: 90px 80px;
+    background: transparent;
+}
+
+#cart-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* CARRITO VACÍO */
+
+#cart-empty {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#cart-empty p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+/* PRODUCTOS DEL CARRITO */
+
+#cart-products {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 18px;
+
+    background: rgba(234, 232, 232, 0.8);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item img {
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* CANTIDAD */
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-quantity button {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #000;
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.cart-quantity span {
+    min-width: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ELIMINAR */
+
+.cart-remove {
+    border: none;
+
+    background: transparent;
+
+    color: #dc3545;
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+}
+
+/* RESUMEN */
+
+#cart-summary {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: rgba(234, 232, 232, 0.8);
+
+    border-radius: 18px;
+
+    border: 1px solid var(--color-borde);
+
+    text-align: right;
+}
+
+#cart-summary h3 {
+    margin-bottom: 15px;
+}
+
+#cart-total {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+/* CONTADOR NAVBAR */
+
+#cart-count {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 22px;
+    height: 22px;
+
+    padding: 0 6px;
+
+    margin-left: 5px;
+
+    background: #000;
+    color: white;
+
+    border-radius: 50px;
+
+    font-size: 0.75rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .cart-section {
+        padding: 70px 25px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .cart-item-info {
+        min-width: 150px;
+    }
+
+    #cart-summary {
+        text-align: center;
+    }
+
 }
