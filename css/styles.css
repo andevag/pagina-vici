@@ -29,7 +29,8 @@ section,
     --color-texto: #d5d5d5;
     --color-texto-suave: #bdbdbd;
 
-    --color-borde: rgba(252, 216, 38, 0.748);
+    --color-borde: rgba(0, 255, 255, 0.442);
+    --color-links: #fff200d1;
 }
 
 
@@ -133,10 +134,10 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--color-borde );
+    color: var(--color-links);
 
     text-shadow:
-        0 0 5px var(--color-borde);
+        0 0 5px var(--color-links),;
 }
 
 
@@ -468,6 +469,38 @@ body {
     font-weight: bold;
 
     margin-bottom: 18px;
+}
+/* ==============================
+   STOCK
+   ============================== */
+
+.product-stock {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stock-disponible {
+    color: #068ed7;
+}
+
+.stock-agotado {
+    color: #dc3545;
+}
+
+
+/* BOTÓN AGOTADO */
+
+.btn-agotado {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-agotado:hover {
+    transform: none;
+    background-color: #b5b8ba61;
+    color: var(--color-negro);
+    box-shadow: none;
 }
 
 
@@ -1083,14 +1116,14 @@ body {
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
-    color: #777;
+    color: #454545;
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease;
 }
 
 .language-selector button:hover {
-    color: #111;
+    color: #050505;
 }
 
 .language-selector button.active {
@@ -1111,4 +1144,272 @@ body {
 .language-selector span {
     color: #aaa;
     font-size: 13px;
+}
+/* ========================================
+   HERO SHOWCASE
+   ======================================== */
+
+.showcase {
+
+    position: relative;
+
+    width: 450px;
+
+    min-height: 520px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.95),
+            rgba(235,235,235,0.85)
+        );
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(201, 162, 39, 0.35);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.showcase:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.3);
+}
+
+
+/* ========================================
+   ETIQUETA
+   ======================================== */
+
+.showcase-label {
+
+    align-self: flex-start;
+
+    padding: 8px 16px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 215, 0, 0.15);
+
+    color: #8a6d00;
+
+    font-size: 0.8rem;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   IMAGEN
+   ======================================== */
+
+#showcase-image {
+
+    width: 445px;
+
+    height: 350px;
+
+    object-fit: contain;
+
+    margin: 10px 0;
+
+    filter:
+        drop-shadow(
+            0 20px 15px rgba(170, 169, 169, 0.41)
+        );
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* ========================================
+   INFORMACIÓN
+   ======================================== */
+
+.showcase-info {
+
+    text-align: center;
+}
+
+
+.showcase-info h3 {
+
+    margin: 5px 0;
+
+    font-size: 1.8rem;
+
+    color: var(--color-negro);
+}
+
+
+#showcase-category {
+
+    margin: 5px 0;
+
+    color: #777;
+
+    font-size: 0.85rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+
+.showcase-price {
+
+    margin: 10px 0 15px;
+
+    font-size: 1.4rem;
+
+    font-weight: bold;
+
+    color: var(--color-negro);
+}
+
+
+/* ========================================
+   BOTÓN
+   ======================================== */
+
+.showcase-button {
+
+    display: inline-block;
+
+    padding: 11px 25px;
+
+    border-radius: 50px;
+
+    background-color: gold;
+
+    color: black;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+}
+
+
+.showcase-button:hover {
+
+    background: #000000;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   CONTROLES
+   ======================================== */
+
+.showcase-controls {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+
+.showcase-controls button {
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 1.8rem;
+
+    color: #555;
+
+    transition: color 0.3s ease;
+}
+
+
+.showcase-controls button:hover {
+
+    color: #000;
+}
+
+
+/* ========================================
+   PUNTOS
+   ======================================== */
+
+#showcase-dots {
+
+    display: flex;
+
+    gap: 7px;
+
+    align-items: center;
+}
+
+
+.showcase-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #bbb;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.showcase-dot.active {
+
+    background: #000;
+
+    transform: scale(1.4);
 }
