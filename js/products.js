@@ -189,28 +189,48 @@ function mostrarProductos() {
         tarjeta.classList.add("product-card");
 
         tarjeta.innerHTML = `
-            <img 
-                src="${producto.imagen}" 
-                alt="${producto.nombre}"
-            >
+    <img 
+        src="${producto.imagen}" 
+        alt="${producto.nombre}"
+    >
 
-            <h3>
-                <strong>${producto.nombre}</strong>
-            </h3>
+    <h3>
+        <strong>${producto.nombre}</strong>
+    </h3>
 
-            <p class="type-product">
-                ${producto.categoria}
-            </p>
+    <p class="type-product">
+        ${producto.categoria}
+    </p>
 
-            <p class="product-price">
-                $${producto.precio.toLocaleString("es-CO")} COP
-            </p>
+    <p class="product-price">
+        $${producto.precio.toLocaleString("es-CO")} COP
+    </p>
 
-            <a href="#" class="btn-product">
-                <strong data-i18n="buy">Comprar</strong>
-            </a>
-        `;
+    <a 
+        href="${generarWhatsApp(producto)}"
+        class="btn-product"
+        target="_blank"
+        rel="noopener"
+    >
+        <strong data-i18n="buy">Comprar</strong>
+    </a>
+`;
 
         contenedor.appendChild(tarjeta);
     });
+}
+
+// ========================================
+// GENERAR ENLACE DE WHATSAPP
+// ========================================
+
+function generarWhatsApp(producto) {
+
+    const numero = "573053779384";
+
+    const precio = producto.precio.toLocaleString("es-CO");
+
+    const mensaje = `Hola MONARQ, estoy interesado en comprar ${producto.nombre} por $${precio} COP.`;
+
+    return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 }

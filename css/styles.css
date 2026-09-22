@@ -80,10 +80,10 @@ body {
         ),
         linear-gradient(
             135deg,
-            #68686892 0%,
-            #68686892 45%,
-            #68686892 70%,
-            #68686892 100%
+            #26262692 0%,
+            #74737392 45%,
+            #74737392 70%,
+            #26262692 100%
         );
 
     position: fixed;
@@ -273,7 +273,7 @@ body {
 .hero-image img {
     width: 100%;
 
-    max-width: 500px;
+    max-width: 700px;
     height: 450px;
     border-radius: 20px;
 
