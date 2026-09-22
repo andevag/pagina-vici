@@ -7,7 +7,7 @@ const productos = [
         nombre: "Eclaire",
         imagen: "assets/images/eclaire.jpg",
         precio: 140000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -39,7 +39,7 @@ const productos = [
         nombre: "Afeef",
         imagen: "assets/images/afeef.jpg",
         precio: 100000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -49,7 +49,7 @@ const productos = [
         nombre: "Ajwad",
         imagen: "assets/images/ajwad.jpg",
         precio: 120000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -59,7 +59,7 @@ const productos = [
         nombre: "Amethyst",
         imagen: "assets/images/amethyst.jpg",
         precio: 119000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -69,7 +69,7 @@ const productos = [
         nombre: "Art of Universe",
         imagen: "assets/images/artofuniverse.jpg",
         precio: 159000,
-        categoria: "Unisex",
+        categoria: "category_unisex",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -79,7 +79,7 @@ const productos = [
         nombre: "Asad",
         imagen: "assets/images/asad.jpg",
         precio: 160000,
-        categoria: "Hombre",
+        categoria: "category_male",
         disponible: true,
         stock: 0,
         destacado: true,
@@ -89,7 +89,7 @@ const productos = [
         nombre: "Asad Bourbon",
         imagen: "assets/images/asadbourbon.jpg",
         precio: 159000,
-        categoria: "Hombre",
+        categoria: "category_male",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -99,7 +99,7 @@ const productos = [
         nombre: "Asad Elixir",
         imagen: "assets/images/asadelixir.jpg",
         precio: 170000,
-        categoria: "Hombre",
+        categoria: "category_male",
         disponible: true,
         stock: 0,
         destacado: true,
@@ -109,7 +109,7 @@ const productos = [
         nombre: "Qaed AI Fursan",
         imagen: "assets/images/fursan.jpg",
         precio: 130000,
-        categoria: "Hombre",
+        categoria: "category_male",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -119,7 +119,7 @@ const productos = [
         nombre: "Her Confecsion",
         imagen: "assets/images/herfconfecsion.jpg",
         precio: 170000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -129,7 +129,7 @@ const productos = [
         nombre: "Island Bliss",
         imagen: "assets/images/islandbliss.jpg",
         precio: 219000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 0,
         destacado: true,
@@ -139,7 +139,7 @@ const productos = [
         nombre: "Island Breeze",
         imagen: "assets/images/islandbreeze.jpg",
         precio: 190000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -149,7 +149,7 @@ const productos = [
         nombre: "Vanilla Freak",
         imagen: "assets/images/vanillafreak.jpg",
         precio: 159000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -159,7 +159,7 @@ const productos = [
         nombre: "Whipped Pleasure",
         imagen: "assets/images/whipped.jpg",
         precio: 149000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -169,7 +169,7 @@ const productos = [
         nombre: "Sublime",
         imagen: "assets/images/sublime.jpg",
         precio: 165000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -179,7 +179,7 @@ const productos = [
         nombre: "Khamrah",
         imagen: "assets/images/khamra.jpg",
         precio: 175000,
-        categoria: "Unisex",
+        categoria: "category_unisex",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -189,7 +189,7 @@ const productos = [
         nombre: "Khamrah Dukhan",
         imagen: "assets/images/khamradukan.jpg",
         precio: 180000,
-        categoria: "Unisex",
+        categoria: "category_unisex",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -199,7 +199,7 @@ const productos = [
         nombre: "Khamrah Qhawa",
         imagen: "assets/images/khamraqhwa.jpg",
         precio: 179900,
-        categoria: "Unisex",
+        categoria: "category_unisex",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -209,7 +209,7 @@ const productos = [
         nombre: "Yara Candy",
         imagen: "assets/images/yaracandy.jpg",
         precio: 149900,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -219,7 +219,7 @@ const productos = [
         nombre: "Yara Elixir",
         imagen: "assets/images/yaraelixir.jpg",
         precio: 155000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -229,7 +229,7 @@ const productos = [
         nombre: "Yara Moi",
         imagen: "assets/images/yaramoi.jpg",
         precio: 145000,
-        categoria: "Femenino",
+        categoria: "category_female",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -239,7 +239,7 @@ const productos = [
         nombre: "Odyssey Mandarin Sky de Armaf",
         imagen: "assets/images/mandarinsky.jpg",
         precio: 145000,
-        categoria: "Unisex",
+        categoria: "category_unisex",
         disponible: true,
         stock: 2,
         destacado: true,
@@ -280,7 +280,7 @@ tarjeta.innerHTML = `
     </h3>
 
     <p class="type-product">
-        ${producto.categoria}
+        ${traducir(producto.categoria)}
     </p>
 
     <p class="product-price">
@@ -288,33 +288,39 @@ tarjeta.innerHTML = `
     </p>
 
     <p class="product-stock ${disponible ? "stock-disponible" : "stock-agotado"}">
-        ${disponible 
-            ? `Disponible: ${producto.stock}`
-            : "Agotado"
-        }
+    ${
+        disponible
+        ? `${traducir("product_available")}: ${producto.stock}`
+        : traducir("product_sold_out")
+    }
+
     </p>
 
     ${
         disponible
+
         ? `
-            <a 
-                href="${generarWhatsApp(producto)}"
-                class="btn-product"
-                target="_blank"
-                rel="noopener"
-            >
-                <strong data-i18n="buy">Comprar</strong>
-            </a>
+
+        <a 
+            href="${generarWhatsApp(producto)}"
+            class="btn-product"
+            target="_blank"
+            rel="noopener">
+            <strong>${traducir("buy")}</strong>
+        </a>
+
         `
-        : `
-            <button 
-                class="btn-product btn-agotado"
-                disabled
-            >
-                Agotado
-            </button>
-        `
-    }
+
+    :   `
+    
+        <button 
+            class="btn-product btn-agotado"
+            disabled
+        >
+            ${traducir("product_sold_out")}
+        </button>
+    `
+}
 `;
 
         contenedor.appendChild(tarjeta);
@@ -378,17 +384,19 @@ function mostrarShowcase(index) {
 
     showcaseName.textContent = producto.nombre;
 
-    showcaseCategory.textContent = producto.categoria;
+    showcaseCategory.textContent =
+    traducir(producto.categoria);
 
     showcasePrice.textContent =
         `$${producto.precio.toLocaleString("es-CO")} COP`;
 
-    showcaseLabel.textContent = producto.etiqueta;
+    showcaseLabel.textContent = traducir(producto.etiqueta);
 
 
     // Botón de WhatsApp
 
-    showcaseButton.href = generarWhatsApp(producto);
+   showcaseButton.textContent =
+    traducir("showcase_buy");
 
 
     // Actualizar puntos

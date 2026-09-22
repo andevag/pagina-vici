@@ -80,7 +80,23 @@ const translations = {
         footer_links: "Enlaces",
         footer_contact: "Contacto",
         email: "Correo Electrónico",
-        copyright: "© 2026 MONARQ. Todos los derechos reservados."
+        copyright: "© 2026 MONARQ. Todos los derechos reservados.",
+
+        // Catálogo
+        product_available: "Disponible",
+        product_sold_out: "Agotado",
+
+        // Showcase
+        showcase_buy: "Comprar ahora",
+        showcase_most_sold: "🔥 Más vendido",
+        showcase_favorite: "✨ Favorito",
+        showcase_featured: "🆕 Destacado",
+        showcase_exclusive: "💎 Exclusivo",
+
+        // Categorías
+        category_female: "Femenino",
+        category_male: "Masculino",
+        category_unisex: "Unisex"
 
     },
 
@@ -128,10 +144,33 @@ const translations = {
         footer_links: "Links",
         footer_contact: "Contact",
         email: "Email",
-        copyright: "© 2026 MONARQ. All rights reserved."
+        copyright: "© 2026 MONARQ. All rights reserved.",
+
+        // Catalog
+        product_available: "Available",
+        product_sold_out: "Sold out",
+
+        // Showcase
+        showcase_buy: "Shop now",
+        showcase_most_sold: "🔥 Best seller",
+        showcase_favorite: "✨ Favorite",
+        showcase_featured: "🆕 Featured",
+        showcase_exclusive: "💎 Exclusive",
+
+        // Categories
+        category_female: "Female",
+        category_male: "Male",
+        category_unisex: "Unisex"
     }
 
 };
+
+function traducir(key) {
+
+    const idioma = document.documentElement.lang || "es";
+
+    return translations[idioma][key] || key;
+}
 
 
 // ==============================
@@ -165,4 +204,17 @@ function changeLanguage(language) {
 
     // Guardar idioma
     localStorage.setItem("monarq-language", language);
+
+    if (typeof mostrarProductos === "function") {
+        mostrarProductos();
+    }
+
+    if (typeof mostrarShowcase === "function") {
+        mostrarShowcase(showcaseIndex);
+    }
 }
+
+const idiomaGuardado =
+    localStorage.getItem("monarq-language") || "es";
+
+changeLanguage(idiomaGuardado);
