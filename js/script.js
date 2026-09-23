@@ -186,7 +186,7 @@ const productos = [
 
     {
         nombre: "Khamrah Dukhan",
-        imagen: "assets/images/khamradukhan.jpg",
+        imagen: "assets/images/khamradukan.jpg",
         precio: 180000,
         categoria: "category_unisex",
         stock: 2,
