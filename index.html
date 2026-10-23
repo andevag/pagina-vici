@@ -3,227 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MONARQ. Perfumes seleccionados para dejar una impresión.">
+    <link rel="icon" href="assets/images/logomq.png">
     <title>MONARQ | El aroma de la victoria</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <!-- Navbar -->
-         <nav class="navbar">
-            <div class="logo">
-                <h1>MONARQ</h1>
+        <nav class="navbar" aria-label="Navegación principal">
+            <a class="logo" href="#inicio" aria-label="MONARQ, inicio"><img class="logo-mark" src="assets/images/mq-lgp.png" alt=""><span class="logo-name">MONARQ</span></a>
+            <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button>
+            <div class="nav-shell" id="site-navigation">
+                <ul class="nav-links">
+                    <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="#productos" data-i18n="nav_products">Productos</a></li>
+                    <li><a href="#asistente" data-i18n="nav_assistant">Asistente</a></li>
+                    <li><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a></li>
+                    <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+                </ul>
+                <a href="#carrito" class="btn-nav cart-button" id="cart-button"><span class="cart-icon" aria-hidden="true">↗</span><span data-i18n="cart">Carrito</span><span id="cart-count">0</span></a>
+                <div class="language-selector" aria-label="Idioma"><button id="lang-es" onclick="changeLanguage('es')">ES</button><span>/</span><button id="lang-en" onclick="changeLanguage('en')">EN</button></div>
             </div>
-            <ul class="nav-links">
-               <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
-                <li><a href="#productos" data-i18n="nav_products">Productos</a></li>
-                <li><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a></li>
-                <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
-            </ul>
-            <a href="#carrito" class="btn-nav cart-button" id="cart-button">
-    🛒      <span data-i18n="cart">Carrito</span>
-                 <span id="cart-count">0</span>
-            </a>
-            <div class="language-selector">
-                <button id="lang-es" onclick="changeLanguage('es')">ES</button>
-                <span>/</span>
-                <button id="lang-en" onclick="changeLanguage('en')">EN</button>
-            </div>
-         </nav>
+        </nav>
     </header>
+
     <main>
-        <!-- Hero -->
-         <section class="hero" id="inicio">
+        <section class="hero" id="inicio">
             <div class="hero-content">
-                <span class="hero-tag" data-i18n="hero_tag">Fragancias exclusivas </span>
-               <h2 data-i18n="hero_title">El aroma de la victoria</h2>
-               <p data-i18n="hero_description">Descubre la esencia de la victoria con MONARQ,
-                una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.</p>
+                <span class="hero-tag" data-i18n="hero_tag">Fragancias exclusivas</span>
+                <h2 data-i18n="hero_title">El aroma de la victoria</h2>
+                <p data-i18n="hero_description">Descubre la esencia de la victoria con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.</p>
                 <a href="#productos" class="btn-hero" data-i18n="hero_button">Explorar colección</a>
             </div>
             <div class="hero-image">
                 <div class="showcase" id="showcase">
-                    <span class="showcase-label" id="showcase-label">
-                        🔥 Más vendido
-                    </span>
-                    <img id="showcase-image" src="" alt="Perfume destacado">
-
-
+                    <span class="showcase-label" id="showcase-label">Más vendido</span>
+                    <img id="showcase-image" src="assets/images/yumyum.jpg" alt="Perfume destacado">
                     <div class="showcase-info">
-                        <h3 id="showcase-name">
-                            Eclaire
-                        </h3>
-
-                        <p id="showcase-category">
-                            Femenino
-                        </p>
-
-                        <p class="showcase-price" id="showcase-price">
-                            $140.000 COP
-                        </p>
-
-                        <a href="#" id= "showcase-button" class="showcase-button" target="_blank">
-                            Comprar ahora
-                        </a>
-
+                        <h3 id="showcase-name">Eclaire</h3>
+                        <p id="showcase-category">Femenino</p>
+                        <p class="showcase-price" id="showcase-price">$140.000 COP</p>
+                        <a href="#" id="showcase-button" class="showcase-button">Comprar ahora</a>
+                    </div>
+                </div>
             </div>
-            <div class="showcase-controls">
-                <button id="showcase-prev">
-                    </button>
-                    <div id="showcase-dots"></div>
-                    <button id="showcase-next">
-                    </button>
-            </div>
-</div>
-         </section>
-        <!-- Productos -->
+        </section>
+
         <section class="products" id="productos">
-
-            <h2 class="section-title" data-i18n="collection_title">
-                Nuestra Colección
-            </h2>
-
-            <div class="section-line"></div>
-
+            <h2 class="section-title" data-i18n="collection_title">Nuestra Colección</h2><div class="section-line"></div>
+            <div class="sort-bar">
+                <label class="sort-label" for="sort-select" data-i18n="sort_label">Ordenar por</label>
+                <select class="sort-select" id="sort-select" aria-label="Ordenar la colección">
+                    <option value="az" data-i18n="sort_az">A-Z</option>
+                    <option value="za" data-i18n="sort_za">Z-A</option>
+                    <option value="mayor" data-i18n="sort_mayor">Mayor precio</option>
+                    <option value="menor" data-i18n="sort_menor">Menor precio</option>
+                    <option value="valoracion" data-i18n="sort_valoracion">Valoración</option>
+                    <option value="genero" data-i18n="sort_genero">Género</option>
+                </select>
+            </div>
             <div class="products-container"></div>
-
         </section>
 
-        <!-- CARRITO -->
+        <section class="assistant" id="asistente">
+            <h2 class="section-title" data-i18n="assistant_title">Asistente de recomendaciones</h2>
+            <div class="section-line"></div>
+            <p class="assistant-intro" data-i18n="assistant_intro">Cuéntanos qué buscas y te ayudaremos a encontrar tu perfume perfecto.</p>
+
+            <div class="assistant-chips" id="assistant-chips">
+                <button type="button" class="chip" data-pregunta="Busco un perfume dulce para una cita."></button>
+                <button type="button" class="chip" data-pregunta="Quiero un perfume que cueste menos de 150.000 pesos."></button>
+                <button type="button" class="chip" data-pregunta="Recomiéndame tres perfumes para usar todos los días."></button>
+                <button type="button" class="chip" data-pregunta="Busco algo fresco para el día a día."></button>
+            </div>
+
+            <div class="assistant-chat" id="assistant-chat" aria-live="polite"></div>
+
+            <form class="assistant-form" id="assistant-form">
+                <label class="visually-hidden" for="assistant-input">Escribe tu solicitud al asistente</label>
+                <input id="assistant-input" type="text" autocomplete="off" data-i18n-placeholder="assistant_placeholder" placeholder="Ej: busco algo fresco y económico para todos los días">
+                <button type="submit" class="btn-hero" data-i18n="assistant_send">Preguntar</button>
+            </form>
+            <p class="assistant-demo-note" role="note" data-i18n="assistant_note">Modo demostración: las recomendaciones se calculan sobre nuestro catálogo actual. Próximamente las hará nuestra inteligencia artificial.</p>
+        </section>
+
         <section class="cart-section" id="carrito">
-
-            <h2 class="section-title" data-i18n="cart_title">
-                Tu carrito
-            </h2>
-
-            <div class="section-line"></div>
-
+            <h2 class="section-title" data-i18n="cart_title">Tu carrito</h2><div class="section-line"></div>
             <div id="cart-container">
-
-                <div id="cart-empty">
-                    <p data-i18n="cart_empty">
-                        Tu carrito está vacío.
-                    </p>
-
-                    <a href="#productos"
-                    class="btn-hero"
-                    data-i18n="cart_explore">
-                        Explorar productos
-                    </a>
-                </div>
-
+                <div id="cart-empty"><p data-i18n="cart_empty">Tu carrito está vacío.</p><a href="#productos" class="btn-hero" data-i18n="cart_explore">Explorar productos</a></div>
                 <div id="cart-products"></div>
-
-                <div id="cart-summary">
-
-                    <h3 data-i18n="cart_summary">
-                        Resumen de compra
-                    </h3>
-
-                    <p>
-                        <span data-i18n="cart_total">
-                            Total:
-                        </span>
-
-                        <strong id="cart-total">
-                            $0 COP
-                        </strong>
-                    </p>
-
-                    <button
-                        id="cart-whatsapp"
-                        class="btn-product"
-                        data-i18n="cart_buy"
-                    >
-                        Comprar por WhatsApp
-                    </button>
-
-                </div>
-
+                <div id="cart-summary"><h3 data-i18n="cart_summary">Resumen de compra</h3><p><span data-i18n="cart_total">Total:</span><strong id="cart-total">$0 COP</strong></p><button id="cart-whatsapp" class="btn-product" data-i18n="cart_buy">Comprar por WhatsApp</button></div>
             </div>
-
         </section>
 
-            <!-- Beneficios -->
         <section class="benefits" id="beneficios">
-            <h2 class="section-title" data-i18n="why_monarq">¿Por qué MONARQ?</h2>
-            <div class="section-line"></div>
+            <h2 class="section-title" data-i18n="why_monarq">¿Por qué MONARQ?</h2><div class="section-line"></div>
             <div class="benefits-container">
-                <div class="benefit-card">
-                    <span>✨</span>
-                    <h3 data-i18n="benefit_exclusive_title">Fragancias Exclusivas</h3>
-                    <p data-i18n="benefit_exclusive_text">Seleccionamos perfumes que destacan por su calidad, elegancia y personalidad.</p>
-                </div>
-                <div class="benefit-card">
-                    <span>⏳</span>
-                    <h3 data-i18n="benefit_duration_title">Larga Duración</h3>
-                    <p data-i18n="benefit_duration_text"> Aromas intensos y duraderos para acompañarte durante todo el día.</p>
-                </div>
-                <div class="benefit-card">
-                    <span>🛍️</span>
-                    <h3 data-i18n="benefit_safe_title">Compra segura</h3>
-                    <p data-i18n="benefit_safe_text"> Atención personalizada y compromiso para que tengas una excelente experiencia.</p>
-                </div>
-                <div class="benefit-card">
-                    <span>🚚</span>
-                    <h3 data-i18n="benefit_shipping_title">Envíos</h3>
-                    <p data-i18n="benefit_shipping_text">Próximamente realizaremos envíos para que recibas tu perfume donde estés.</p>
-                </div>
+                <article class="benefit-card"><span>✦</span><h3 data-i18n="benefit_exclusive_title">Fragancias Exclusivas</h3><p data-i18n="benefit_exclusive_text">Seleccionamos perfumes que destacan por su calidad, elegancia y personalidad.</p></article>
+                <article class="benefit-card"><span>◷</span><h3 data-i18n="benefit_duration_title">Larga Duración</h3><p data-i18n="benefit_duration_text">Aromas intensos y duraderos para acompañarte durante todo el día.</p></article>
+                <article class="benefit-card"><span>◇</span><h3 data-i18n="benefit_safe_title">Compra segura</h3><p data-i18n="benefit_safe_text">Atención personalizada y compromiso para que tengas una excelente experiencia.</p></article>
+                <article class="benefit-card"><span>→</span><h3 data-i18n="benefit_shipping_title">Envíos</h3><p data-i18n="benefit_shipping_text">Próximamente realizaremos envíos para que recibas tu perfume donde estés.</p></article>
             </div>
         </section>
-        <!-- Sobre MONARQ -->
-         <section class="about" id="sobre">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2>
-                    <div class="section-line"></div>
-                    <p data-i18n="about_text_1">En <strong>MONARQ</strong> creemos que un perfume no solo deja un aroma,
-                        deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, 
-                        elegancia y confianza.
-                    </p>
-                    <p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados,
-                        combinando calidad, estilo y una excelente atención para que cadacliente encuentre el aroma perfecto.</p>
-                    <a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a>
-                </div>
-                <div class="about-image">
-                    <img src="assets/images/eclaire.jpg" alt="Perfume MONARQ">
-                </div>
-            </div>
-         </section>
-        <!-- Contacto/Footer-->
-         <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h2>MONARQ</h2>
-                   <p data-i18n="footer_description">Fragancias que dejan una impresión.</p>
-                </div>
-                <div class="footer-links">
-                    <h3 data-i18n="footer_links">Enlaces</h3>
-                    <a href="#inicio" data-i18n="nav_home">Inicio</a>
-                    <a href="#productos" data-i18n="nav_products">Productos</a>
-                    <a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a>
-                    <a href="#contacto" data-i18n="nav_contact">Contacto</a>
-                </div>
-                <div class="footer-contact" id="contacto">
-                    <h3 data-i18n="footer_contact">Contacto</h3>
-                    <p>WhatsApp</p>
-                    <a href="https://wa.me/573053779384" target="_blank" rel="noopener">+57 305 3779384</a>
-                    <a href="https://www.instagram.com/vici_perfumes/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="mailto:vici_perfumes@gmail.com" data-i18n="email">Correo Electrónico</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="copyright">© 2026 MONARQ. Todos los derechos reservados.</p>
-            </div>
-         </footer>
+
+        <section class="about" id="sobre">
+            <div class="about-content"><div class="about-text"><h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2><div class="section-line"></div><p data-i18n="about_text_1">En MONARQ creemos que un perfume no solo deja un aroma, deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, elegancia y confianza.</p><p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados, combinando calidad, estilo y una excelente atención para que cada cliente encuentre el aroma perfecto.</p><a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a></div><div class="about-image"><img src="assets/images/yumyum.jpg" alt="Perfume MONARQ"></div></div>
+        </section>
     </main>
-    <script src="js/script.js"></script>
+
+    <footer class="footer" id="contacto"><div class="footer-content"><div class="footer-brand"><h2>MONARQ</h2><p data-i18n="footer_description">Fragancias que dejan una impresión.</p></div><div class="footer-links"><h3 data-i18n="footer_links">Enlaces</h3><a href="#inicio" data-i18n="nav_home">Inicio</a><a href="#productos" data-i18n="nav_products">Productos</a><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a><a href="#contacto" data-i18n="nav_contact">Contacto</a></div><div class="footer-contact"><h3 data-i18n="footer_contact">Contacto</h3><p>WhatsApp</p><a href="https://wa.me/573053779384" target="_blank" rel="noopener">+57 305 3779384</a><a href="https://www.instagram.com/vici_perfumes/" target="_blank" rel="noopener">Instagram</a><a href="mailto:vici_perfumes@gmail.com" data-i18n="email">Correo Electrónico</a></div></div><div class="footer-bottom"><p data-i18n="copyright">© 2026 MONARQ. Todos los derechos reservados.</p></div></footer>
+    <script src="js/productos.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
-
-<!-- COMANDOS GIT
- 
-GIT ADD .
-GIT COMMITT -M "" 
-GIT PUSH ORIGIN MAIN
-

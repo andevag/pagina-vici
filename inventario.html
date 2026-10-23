@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de inventario MONARQ con asistente en lenguaje natural.">
+    <link rel="icon" href="assets/images/logomq.png">
+    <title>Inventario | MONARQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/inventario.css">
+</head>
+<body class="inv-body">
+    <header class="inv-nav">
+        <a class="logo" href="inventario.html" aria-label="MONARQ, inventario"><img class="logo-mark" src="assets/images/primary-logo.png" alt=""><span class="logo-name">MONARQ</span><span class="inv-nav-tag">Inventario</span></a>
+        <div class="inv-nav-actions">
+            <a class="btn-nav" href="index.html">Ver tienda</a>
+        </div>
+    </header>
+
+    <main class="inv-main">
+        <div class="inv-layout">
+            <div class="inv-content">
+                <h1 class="inv-title">Panel de inventario</h1>
+                <p class="inv-subtitle">Consulta y edita el catálogo. También puedes pedirle los cambios al asistente en lenguaje natural.</p>
+
+                <div class="inv-stats" id="inv-stats"></div>
+
+                <section class="inv-panel">
+                    <div class="inv-panel-head">
+                        <h2>Catálogo</h2>
+                        <div class="inv-panel-tools">
+                            <label class="visually-hidden" for="inv-sort">Ordenar catálogo</label>
+                            <select class="inv-sort" id="inv-sort" aria-label="Ordenar catálogo">
+                                <option value="az">A-Z</option>
+                                <option value="za">Z-A</option>
+                                <option value="mayor">Mayor precio</option>
+                                <option value="menor">Menor precio</option>
+                                <option value="valoracion">Valoración</option>
+                                <option value="genero">Género</option>
+                            </select>
+                            <span class="inv-panel-count" id="inv-count"></span>
+                        </div>
+                    </div>
+                    <p class="inv-hint">Edita cualquier campo directamente y se guarda solo en este navegador.</p>
+                    <div class="inv-tabla" id="inv-tabla"></div>
+                </section>
+            </div>
+
+            <aside class="inv-aside">
+                <section class="inv-panel inv-assistant">
+                    <div class="inv-panel-head">
+                        <h2>Asistente</h2>
+                        <span class="inv-status" id="inv-status">En línea</span>
+                    </div>
+                    <p class="inv-hint">Háblale como a una persona. Ej: «cambia el precio de Asad por 150000».</p>
+
+                    <div class="inv-chips" id="inv-chips">
+                        <button type="button" class="chip" data-cmd="¿Cuál es el producto más vendido?">Más vendido</button>
+                        <button type="button" class="chip" data-cmd="¿Cuántos productos están agotados?">Agotados</button>
+                        <button type="button" class="chip" data-cmd="Cambia el precio de Asad por 150000">Cambiar precio</button>
+                        <button type="button" class="chip" data-cmd="¿Cuál es el producto más caro?">Más caro</button>
+                        <button type="button" class="chip" data-cmd="Ayuda">Ayuda</button>
+                    </div>
+
+                    <div class="inv-chat" id="inv-chat" aria-live="polite"></div>
+
+                    <form class="inv-form" id="inv-form">
+                        <label class="visually-hidden" for="inv-input">Escribe una instrucción para el asistente</label>
+                        <input id="inv-input" type="text" autocomplete="off" placeholder="Ej: dime cuál es el más vendido">
+                        <button type="submit" class="btn-hero">Enviar</button>
+                    </form>
+                    <p class="inv-note" role="note">Modo demostración: los cambios se aplican sobre el catálogo y se guardan en este navegador. Pronto los ejecutará el backend.</p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <div class="inv-toast" id="inv-toast" role="status" aria-live="polite"></div>
+
+    <script src="js/productos.js"></script>
+    <script src="js/inventario.js"></script>
+</body>
+</html>

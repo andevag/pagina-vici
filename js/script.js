@@ -1,251 +1,18 @@
-// ========================================
-// PRODUCTOS DE MONARQ
-// ========================================
+// El catalogo se define en js/productos.js (cargado ANTES que este archivo).
+// Si el inventario guardo cambios en este navegador, se aplican aqui.
 
-const productos = [
-
-    {
-        nombre: "Eclaire",
-        imagen: "assets/images/eclaire.jpg",
-        precio: 140000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_most_sold"
-    },
-
-    {
-        nombre: "Yara Rosa",
-        imagen: "assets/images/yara.jpg",
-        precio: 130000,
-        categoria: "category_female",
-        stock: 0,
-        destacado: true,
-        etiqueta: "showcase_most_sold"
-    },
-
-    {
-        nombre: "Cloud Pink",
-        imagen: "assets/images/cloudpink.jpg",
-        precio: 140000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Afeef",
-        imagen: "assets/images/afeef.jpg",
-        precio: 100000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Ajwad",
-        imagen: "assets/images/ajwad.jpg",
-        precio: 120000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Amethyst",
-        imagen: "assets/images/amethyst.jpg",
-        precio: 119000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Art of Universe",
-        imagen: "assets/images/artofuniverse.jpg",
-        precio: 159000,
-        categoria: "category_unisex",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Asad",
-        imagen: "assets/images/asad.jpg",
-        precio: 160000,
-        categoria: "category_male",
-        stock: 0,
-        destacado: true,
-        etiqueta: "showcase_most_sold"
-    },
-
-    {
-        nombre: "Asad Bourbon",
-        imagen: "assets/images/asadbourbon.jpg",
-        precio: 159000,
-        categoria: "category_male",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Asad Elixir",
-        imagen: "assets/images/asadelixir.jpg",
-        precio: 170000,
-        categoria: "category_male",
-        stock: 0,
-        destacado: true,
-        etiqueta: "showcase_most_sold"
-    },
-
-    {
-        nombre: "Qaed Al Fursan",
-        imagen: "assets/images/fursan.jpg",
-        precio: 130000,
-        categoria: "category_male",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Her Confession",
-        imagen: "assets/images/herfconfecsion.jpg",
-        precio: 170000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Island Bliss",
-        imagen: "assets/images/islandbliss.jpg",
-        precio: 219000,
-        categoria: "category_female",
-        stock: 0,
-        destacado: true,
-        etiqueta: "showcase_most_sold"
-    },
-
-    {
-        nombre: "Island Breeze",
-        imagen: "assets/images/islandbreeze.jpg",
-        precio: 190000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Vanilla Freak",
-        imagen: "assets/images/vanillafreak.jpg",
-        precio: 159000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Whipped Pleasure",
-        imagen: "assets/images/whipped.jpg",
-        precio: 149000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Sublime",
-        imagen: "assets/images/sublime.jpg",
-        precio: 165000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Khamrah",
-        imagen: "assets/images/khamra.jpg",
-        precio: 175000,
-        categoria: "category_unisex",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Khamrah Dukhan",
-        imagen: "assets/images/dukan.jpg",
-        precio: 180000,
-        categoria: "category_unisex",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Khamrah Qahwa",
-        imagen: "assets/images/khamraqhwa.jpg",
-        precio: 179900,
-        categoria: "category_unisex",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Yara Candy",
-        imagen: "assets/images/yaracandy.jpg",
-        precio: 149900,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Yara Elixir",
-        imagen: "assets/images/yaraelixir.jpg",
-        precio: 155000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
-    },
-
-    {
-        nombre: "Yara Moi",
-        imagen: "assets/images/yaramoi.jpg",
-        precio: 145000,
-        categoria: "category_female",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_favorite"
-    },
-
-    {
-        nombre: "Odyssey Mandarin Sky de Armaf",
-        imagen: "assets/images/mandarinsky.jpg",
-        precio: 145000,
-        categoria: "category_unisex",
-        stock: 2,
-        destacado: true,
-        etiqueta: "showcase_featured"
+const inventarioGuardado = (function () {
+    try {
+        const datos = localStorage.getItem("monarq-inventario");
+        return datos ? JSON.parse(datos) : null;
+    } catch (error) {
+        return null;
     }
+})();
 
-];
-
+if (Array.isArray(inventarioGuardado) && inventarioGuardado.length) {
+    productos.splice(0, productos.length, ...inventarioGuardado);
+}
 
 // ========================================
 // TRADUCCIONES
@@ -257,6 +24,7 @@ const translations = {
 
         nav_home: "Inicio",
         nav_products: "Productos",
+        nav_assistant: "Asistente",
         nav_about: "Sobre MONARQ",
         nav_contact: "Contacto",
         buy: "Comprar",
@@ -270,6 +38,20 @@ const translations = {
         hero_button: "Explorar colección",
 
         collection_title: "Nuestra Colección",
+
+        sort_label: "Ordenar por",
+
+        sort_az: "A-Z",
+
+        sort_za: "Z-A",
+
+        sort_mayor: "Mayor precio",
+
+        sort_menor: "Menor precio",
+
+        sort_valoracion: "Valoración",
+
+        sort_genero: "Género",
 
         why_monarq: "¿Por qué MONARQ?",
 
@@ -315,6 +97,7 @@ const translations = {
 
         product_available: "Disponible",
         product_sold_out: "Agotado",
+        product_added: "Agregado",
 
         showcase_buy: "Comprar ahora",
         showcase_most_sold: "🔥 Más vendido",
@@ -331,13 +114,36 @@ const translations = {
         cart_empty: "Tu carrito está vacío.",
         cart_explore: "Explorar productos",
         cart_summary: "Resumen de compra",
-        cart_total: "Total:",
-        cart_buy: "Comprar por WhatsApp"
+cart_total: "Total:",
+        cart_buy: "Comprar por WhatsApp",
+
+        assistant_title: "Asistente de recomendaciones",
+        assistant_intro: "Cuéntanos qué buscas y te ayudaremos a encontrar tu perfume perfecto.",
+        assistant_placeholder: "Ej: busco algo fresco y económico para todos los días",
+        assistant_send: "Preguntar",
+        assistant_note: "Modo demostración: las recomendaciones se calculan sobre nuestro catálogo actual. Próximamente las hará nuestra inteligencia artificial.",
+        assistant_typing: "El asistente está pensando...",
+        assistant_you: "Tú",
+        assistant_bot: "Asistente",
+        assistant_pending: "El asistente inteligente ya está trabajando aquí: son recomendaciones de demostración. La versión con inteligencia artificial se conectará desde el backend en una próxima etapa.",
+        assistant_for_budget: "Estos perfumes encajan con tu presupuesto:",
+        assistant_for_category: "Aquí tienes opciones para ti:",
+        assistant_for_fresh: "Estos son algunos de nuestros perfumes más frescos:",
+        assistant_for_sweet: "Un toque dulce que encaja perfecto:",
+        assistant_favorites: "No encontré una coincidencia exacta, pero estos son nuestros favoritos:",
+        assistant_no_category: "No encontré perfumes que coincidan con esos criterios. Prueba a cambiar tu pregunta.",
+        assistant_no_results: "No encontré perfumes dentro de tu presupuesto. Te muestro nuestros favoritos:",
+        assistant_available: "Disponible",
+
+        assistant_example_1: "Busco un perfume dulce para una cita.",
+        assistant_example_2: "Quiero un perfume que cueste menos de 150.000 pesos.",
+        assistant_example_3: "Recomiéndame tres perfumes para usar todos los días.",
+        assistant_example_4: "Busco algo fresco para el día a día."
+
     },
 
 
     en: {
-
         nav_home: "Home",
         nav_products: "Products",
         nav_about: "About MONARQ",
@@ -353,6 +159,20 @@ const translations = {
         hero_button: "Explore collection",
 
         collection_title: "Our Collection",
+
+        sort_label: "Sort by",
+
+        sort_az: "A-Z",
+
+        sort_za: "Z-A",
+
+        sort_mayor: "Highest price",
+
+        sort_menor: "Lowest price",
+
+        sort_valoracion: "Rating",
+
+        sort_genero: "Gender",
 
         why_monarq: "Why MONARQ?",
 
@@ -398,6 +218,7 @@ const translations = {
 
         product_available: "Available",
         product_sold_out: "Sold out",
+        product_added: "Added",
 
         showcase_buy: "Shop now",
         showcase_most_sold: "🔥 Best seller",
@@ -415,7 +236,30 @@ const translations = {
         cart_explore: "Explore products",
         cart_summary: "Order Summary",
         cart_total: "Total:",
-        cart_buy: "Buy via WhatsApp"
+        cart_buy: "Buy via WhatsApp",
+
+        assistant_title: "Recommendation assistant",
+        assistant_intro: "Tell us what you're looking for and we'll help you find the perfect fragrance.",
+        assistant_placeholder: "E.g. I'm looking for something fresh and affordable for every day",
+        assistant_send: "Ask",
+        assistant_note: "Demo mode: recommendations are calculated from our current catalog. Soon this will be powered by our artificial intelligence.",
+        assistant_typing: "The assistant is thinking...",
+        assistant_you: "You",
+        assistant_bot: "Assistant",
+        assistant_pending: "The smart assistant is already working here: these are demo recommendations. The AI-powered version will be connected from the backend in a future stage.",
+        assistant_for_budget: "These fragrances fit your budget:",
+        assistant_for_category: "Here are great options for you:",
+        assistant_for_fresh: "Some of our freshest fragrances:",
+        assistant_for_sweet: "A sweet touch that fits perfectly:",
+        assistant_favorites: "No exact match found, but these are our favorites:",
+        assistant_no_category: "I couldn't find fragrances matching those criteria. Try changing your question.",
+        assistant_no_results: "I couldn't find fragrances in your budget. Here are our favorites:",
+        assistant_available: "Available",
+
+        assistant_example_1: "I'm looking for a sweet perfume for a date.",
+        assistant_example_2: "I want a perfume that costs less than 150,000 pesos.",
+        assistant_example_3: "Recommend three perfumes for everyday use.",
+        assistant_example_4: "I'm looking for something fresh for everyday wear."
     }
 
 };
@@ -470,9 +314,9 @@ function agregarAlCarrito(nombreProducto) {
                 producto.nombre === nombreProducto
         );
 
-    if (!producto) return;
+    if (!producto) return false;
 
-    if (producto.stock <= 0) return;
+    if (producto.stock <= 0) return false;
 
 
     const productoCarrito =
@@ -490,6 +334,12 @@ function agregarAlCarrito(nombreProducto) {
         ) {
 
             productoCarrito.cantidad++;
+
+        }
+
+        else {
+
+            return false;
 
         }
 
@@ -515,6 +365,274 @@ function agregarAlCarrito(nombreProducto) {
     guardarCarrito();
 
     mostrarCarrito();
+
+    return true;
+
+}
+
+
+// ========================================
+// COMPRAR CON ANIMACIÓN
+// ========================================
+
+function comprarProducto(boton, nombreProducto) {
+
+    const producto =
+        productos.find(
+            producto =>
+                producto.nombre === nombreProducto
+        );
+
+    if (!producto || producto.stock <= 0) {
+
+        return;
+
+    }
+
+    const agregado =
+        agregarAlCarrito(nombreProducto);
+
+    if (!agregado) {
+
+        return;
+
+    }
+
+    animarVueloAlCarrito(boton);
+    feedbackBoton(boton);
+
+}
+
+
+// ========================================
+// VOLAR LA IMAGEN HASTA EL CARRITO
+// ========================================
+
+function animarVueloAlCarrito(boton) {
+
+    if (
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+
+        pulsoCarrito();
+        return;
+
+    }
+
+    const contenedor =
+        boton.closest(
+            ".product-card, .recomendacion-card, .showcase"
+        ) || boton;
+
+    const imagen =
+        contenedor.querySelector("img");
+
+    const carrito =
+        document.getElementById(
+            "cart-button"
+        );
+
+    let rectoCarrito = null;
+
+    if (carrito) {
+
+        const r =
+            carrito.getBoundingClientRect();
+
+        if (r.width > 0 || r.height > 0) {
+
+            rectoCarrito = r;
+
+        }
+
+    }
+
+    let xFin;
+    let yFin;
+
+    if (rectoCarrito) {
+
+        xFin =
+            rectoCarrito.left +
+            rectoCarrito.width / 2;
+
+        yFin =
+            rectoCarrito.top +
+            rectoCarrito.height / 2;
+
+    } else {
+
+        xFin =
+            window.innerWidth - 36;
+
+        yFin = 40;
+
+    }
+
+    const desde =
+        (imagen || boton)
+            .getBoundingClientRect();
+
+    const ancho =
+        Math.max(
+            46,
+            Math.min(desde.width, 92)
+        );
+
+    const alto =
+        Math.max(
+            46,
+            Math.min(desde.height, 108)
+        );
+
+    const vuelo =
+        document.createElement("img");
+
+    vuelo.className =
+        "vuelo-carrito";
+
+    if (imagen) {
+
+        vuelo.src =
+            imagen.src;
+
+        vuelo.alt = "";
+
+    }
+
+    vuelo.style.width =
+        ancho + "px";
+
+    vuelo.style.height =
+        alto + "px";
+
+    vuelo.style.left =
+        (desde.left +
+            desde.width / 2 -
+            ancho / 2) + "px";
+
+    vuelo.style.top =
+        (desde.top +
+            desde.height / 2 -
+            alto / 2) + "px";
+
+    document.body.appendChild(vuelo);
+
+    requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+            const dx =
+                xFin -
+                (parseFloat(vuelo.style.left) +
+                    ancho / 2);
+
+            const dy =
+                yFin -
+                (parseFloat(vuelo.style.top) +
+                    alto / 2);
+
+            vuelo.style.transform =
+                `translate(${dx}px, ${dy}px) scale(.18)`;
+
+            vuelo.style.opacity = "0";
+
+        });
+
+    });
+
+    setTimeout(() => {
+
+        vuelo.remove();
+
+        pulsoCarrito();
+
+    }, 700);
+
+}
+
+
+// ========================================
+// PULSO DEL CARRITO
+// ========================================
+
+function pulsoCarrito() {
+
+    const carrito =
+        document.getElementById(
+            "cart-button"
+        );
+
+    const conteo =
+        document.getElementById(
+            "cart-count"
+        );
+
+    [carrito, conteo].forEach(
+        elemento => {
+
+            if (!elemento) return;
+
+            elemento.classList.remove(
+                "bump"
+            );
+
+            void elemento.offsetWidth;
+
+            elemento.classList.add(
+                "bump"
+            );
+
+            setTimeout(() => {
+
+                elemento.classList.remove(
+                    "bump"
+                );
+
+            }, 500);
+
+        }
+    );
+
+}
+
+
+// ========================================
+// FEEDBACK DEL BOTÓN
+// ========================================
+
+function feedbackBoton(boton) {
+
+    if (!boton || boton.disabled) {
+
+        return;
+
+    }
+
+    const original =
+        boton.innerHTML;
+
+    boton.classList.add(
+        "btn-agregado"
+    );
+
+    boton.innerHTML =
+        "✓ " +
+        traducir("product_added");
+
+    setTimeout(() => {
+
+        boton.innerHTML =
+            original;
+
+        boton.classList.remove(
+            "btn-agregado"
+        );
+
+    }, 950);
 
 }
 
@@ -955,7 +1073,13 @@ function mostrarProductos() {
     contenedor.innerHTML = "";
 
 
-    productos.forEach(producto => {
+    const ordenados =
+        typeof ordenarProductos === "function"
+            ? ordenarProductos(productos, ordenActual)
+            : productos;
+
+
+    ordenados.forEach(producto => {
 
         const tarjeta =
             document.createElement("div");
@@ -1013,7 +1137,7 @@ function mostrarProductos() {
 
                         <button
                             class="btn-product"
-                            onclick="agregarAlCarrito('${producto.nombre}')"
+                            onclick="comprarProducto(this, '${producto.nombre}')"
                         >
                             <strong>
                                 ${traducir("buy")}
@@ -1091,21 +1215,6 @@ const showcaseLabel =
 const showcaseButton =
     document.getElementById(
         "showcase-button"
-    );
-
-const showcasePrev =
-    document.getElementById(
-        "showcase-prev"
-    );
-
-const showcaseNext =
-    document.getElementById(
-        "showcase-next"
-    );
-
-const showcaseDots =
-    document.getElementById(
-        "showcase-dots"
     );
 
 
@@ -1186,7 +1295,8 @@ function mostrarShowcase(index) {
 
                 event.preventDefault();
 
-                agregarAlCarrito(
+                comprarProducto(
+                    showcaseButton,
                     producto.nombre
                 );
 
@@ -1195,139 +1305,56 @@ function mostrarShowcase(index) {
     }
 
 
-    document
-        .querySelectorAll(
-            ".showcase-dot"
-        )
-        .forEach(
-            (dot, i) => {
-
-                dot.classList.toggle(
-                    "active",
-                    i === showcaseIndex
-                );
-
-            }
-        );
-
 }
-
-
-// ========================================
-// CREAR PUNTOS DEL SHOWCASE
-// ========================================
-
-if (showcaseDots) {
-
-    productosDestacados.forEach(
-        (producto, index) => {
-
-            const dot =
-                document.createElement(
-                    "button"
-                );
-
-
-            dot.classList.add(
-                "showcase-dot"
-            );
-
-
-            dot.addEventListener(
-                "click",
-                () => {
-
-                    showcaseIndex =
-                        index;
-
-
-                    mostrarShowcase(
-                        showcaseIndex
-                    );
-
-                }
-            );
-
-
-            showcaseDots.appendChild(
-                dot
-            );
-
-        }
-    );
-
-}
-
-
-// ========================================
-// SIGUIENTE
-// ========================================
-
-if (showcaseNext) {
-
-    showcaseNext.addEventListener(
-        "click",
-        () => {
-
-            showcaseIndex++;
-
-
-            if (
-                showcaseIndex >=
-                productosDestacados.length
-            ) {
-
-                showcaseIndex = 0;
-
-            }
-
-
-            mostrarShowcase(
-                showcaseIndex
-            );
-
-        }
-    );
-
-}
-
-
-// ========================================
-// ANTERIOR
-// ========================================
-
-if (showcasePrev) {
-
-    showcasePrev.addEventListener(
-        "click",
-        () => {
-
-            showcaseIndex--;
-
-
-            if (
-                showcaseIndex < 0
-            ) {
-
-                showcaseIndex =
-                    productosDestacados.length - 1;
-
-            }
-
-
-            mostrarShowcase(
-                showcaseIndex
-            );
-
-        }
-    );
-
-}
-
 
 // ========================================
 // CAMBIAR IDIOMA
 // ========================================
+
+const navToggle = document.querySelector(".nav-toggle");
+const navShell = document.getElementById("site-navigation");
+
+if (navToggle && navShell) {
+    navToggle.addEventListener("click", () => {
+        const isOpen = navShell.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navShell.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navShell.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+
+// ========================================
+// ORDEN DE LA COLECCION
+// ========================================
+
+let ordenActual = "az";
+
+const selectorOrden =
+    document.getElementById("sort-select");
+
+if (selectorOrden) {
+
+    ordenActual =
+        selectorOrden.value || "az";
+
+    selectorOrden.addEventListener(
+        "change",
+        () => {
+
+            ordenActual =
+                selectorOrden.value;
+
+            mostrarProductos();
+
+        }
+    );
+
+}
 
 function changeLanguage(language) {
 
@@ -1363,6 +1390,55 @@ function changeLanguage(language) {
 
                 element.textContent =
                     translations[language][key];
+
+            }
+
+        }
+    );
+
+
+    document.querySelectorAll(
+        "[data-i18n-placeholder]"
+    ).forEach(
+        element => {
+
+            const key =
+                element.getAttribute(
+                    "data-i18n-placeholder"
+                );
+
+
+            if (
+                translations[language][key]
+            ) {
+
+                element.setAttribute(
+                    "placeholder",
+                    translations[language][key]
+                );
+
+            }
+
+        }
+    );
+
+
+    document.querySelectorAll(
+        ".assistant-chips .chip"
+    ).forEach(
+        (chip, indice) => {
+
+            const texto =
+                translations[language][
+                    "assistant_example_" +
+                    (indice + 1)
+                ];
+
+
+            if (texto) {
+
+                chip.textContent =
+                    texto;
 
             }
 
@@ -1452,6 +1528,518 @@ function changeLanguage(language) {
     mostrarCarrito();
 
 }
+
+
+// ========================================
+// ASISTENTE DE RECOMENDACIONES
+// ========================================
+
+const asistenteChat =
+    document.getElementById(
+        "assistant-chat"
+    );
+
+const asistenteForm =
+    document.getElementById(
+        "assistant-form"
+    );
+
+const asistenteInput =
+    document.getElementById(
+        "assistant-input"
+    );
+
+const asistentesChips =
+    document.querySelectorAll(
+        ".assistant-chips .chip"
+    );
+
+let asistenteOcupado = false;
+
+
+// ========================================
+// NORMALIZAR TEXTO (quita mayúsculas y tildes)
+// ========================================
+
+function normalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+
+// ========================================
+// RECOMENDADOR DE DEMOSTRACIÓN
+// (Se sustituirá por el asistente de IA del backend)
+// ========================================
+
+function recomendacionesDemo(pregunta) {
+    const texto =
+        normalizarTexto(pregunta);
+
+    const idioma =
+        document.documentElement.lang || "es";
+
+    const t = translations[idioma];
+
+    let candidatos =
+        productos.filter(
+            producto =>
+                producto.stock > 0
+        );
+
+    // ----------------------------------------
+    // PRESUPUESTO
+    // ----------------------------------------
+
+    let presupuesto = null;
+    const numeros = texto.match(/\d[\d.,]*/g);
+
+    if (numeros) {
+
+        const valores =
+            numeros
+                .map(n =>
+                    parseFloat(
+                        n
+                            .replace(/\./g, "")
+                            .replace(/,/g, "")
+                    )
+                )
+                .filter(
+                    valor =>
+                        Number.isFinite(valor) &&
+                        valor > 0
+                );
+
+        if (valores.length) {
+
+            presupuesto =
+                Math.min(...valores);
+
+        }
+
+    }
+
+    const quiereBaratos =
+        /barato|economic/.test(texto);
+
+    const quiereCaros =
+        /caro|premium|lujo/.test(texto);
+
+    if (
+        presupuesto !== null ||
+        quiereBaratos
+    ) {
+
+        const limite =
+            presupuesto !== null
+                ? presupuesto
+                : 150000;
+
+        candidatos =
+            candidatos.filter(
+                producto =>
+                    producto.precio <= limite
+            );
+
+    } else if (quiereCaros) {
+
+        candidatos =
+            candidatos.slice().sort(
+                (a, b) =>
+                    b.precio - a.precio
+            );
+
+    }
+
+    // ----------------------------------------
+    // CATEGORÍA
+    // ----------------------------------------
+
+    let categoria = null;
+
+    if (
+        /femenin|mujer|ella|dama/.test(texto)
+    ) {
+
+        categoria = "category_female";
+
+    } else if (
+        /masculin|hombre|para el|para mi porfa/.test(texto)
+    ) {
+
+        categoria = "category_male";
+
+    } else if (
+        /unisex/.test(texto)
+    ) {
+
+        categoria = "category_unisex";
+
+    }
+
+    if (categoria) {
+
+        candidatos =
+            candidatos.filter(
+                producto =>
+                    producto.categoria === categoria
+            );
+
+    }
+
+    // ----------------------------------------
+    // PERFIL: DULCE O FRESCO
+    // (Heurística de demostración basada en el nombre)
+    // ----------------------------------------
+
+    let perfil = null;
+
+    if (
+        /dulce|sweet|vanilla|candy|choco|cookie|berry|caramelo/.test(texto)
+    ) {
+
+        perfil = "dulce";
+
+    } else if (
+        /fresco|fresh|mar|cítric|citric|aqua|verano|playa|ligero/.test(texto)
+    ) {
+
+        perfil = "fresco";
+
+    }
+
+    if (perfil && !categoria) {
+
+        const claves =
+            perfil === "dulce"
+                ? ["candy", "vanilla", "bon", "choco", "cookie", "berry", "mallow", "whipped", "yara"]
+                : ["island", "breeze", "dive", "aqua", "bahamas", "sky", "limon", "cloud", "citrus"];
+
+        const filtrados =
+            candidatos.filter(
+                producto => {
+
+                    const nombre =
+                        normalizarTexto(
+                            producto.nombre
+                        );
+
+                    return claves.some(
+                        clave =>
+                            nombre.includes(clave)
+                    );
+
+                }
+            );
+
+        if (filtrados.length) {
+
+            candidatos = filtrados;
+
+        } else {
+
+            perfil = null;
+
+        }
+
+    }
+
+    // ----------------------------------------
+    // CANTIDAD Y DEDUPLICAR
+    // ----------------------------------------
+
+    const cantidad =
+        /tres|3/.test(texto)
+            ? 3
+            : 4;
+
+    const vistos = new Set();
+    const unicos = [];
+
+    candidatos.forEach(producto => {
+
+        const clave =
+            producto.nombre + "|" +
+            producto.marca;
+
+        if (!vistos.has(clave)) {
+
+            vistos.add(clave);
+            unicos.push(producto);
+
+        }
+
+    });
+
+    const elegidos =
+        unicos.slice(0, cantidad);
+
+    // ----------------------------------------
+    // RESPUESTA EN TEXTO
+    // ----------------------------------------
+
+    let respuesta;
+
+    if (candidatos.length === 0) {
+
+        respuesta =
+            t.assistant_no_category;
+
+    } else if (
+        presupuesto !== null ||
+        quiereBaratos
+    ) {
+
+        respuesta =
+            t.assistant_for_budget;
+
+    } else if (perfil === "fresco") {
+
+        respuesta =
+            t.assistant_for_fresh;
+
+    } else if (perfil === "dulce") {
+
+        respuesta =
+            t.assistant_for_sweet;
+
+    } else {
+
+        respuesta =
+            t.assistant_favorites;
+
+    }
+
+    return {
+        respuesta,
+        productos: elegidos
+    };
+}
+
+
+// ========================================
+// TARJETA DE RECOMENDACIÓN
+// ========================================
+
+function crearTarjetaRecomendacion(producto) {
+
+    const disponible =
+        producto.stock > 0;
+
+    const tarjeta =
+        document.createElement("article");
+
+    tarjeta.className =
+        "recomendacion-card";
+
+    tarjeta.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <h3>${producto.nombre}</h3>
+        <p class="type-product">${traducir(producto.categoria)}</p>
+        <p class="product-price">$${producto.precio.toLocaleString("es-CO")} COP</p>
+        <button class="${disponible ? "btn-product" : "btn-product btn-agotado"}" ${disponible ? "" : "disabled"}>
+            ${disponible ? traducir("buy") : traducir("product_sold_out")}
+        </button>
+    `;
+
+    if (disponible) {
+
+        const boton =
+            tarjeta.querySelector(
+                "button"
+            );
+
+        boton.addEventListener(
+            "click",
+            () =>
+                comprarProducto(
+                    boton,
+                    producto.nombre
+                )
+        );
+
+    }
+
+    return tarjeta;
+}
+
+
+// ========================================
+// BURBUJA DE MENSAJE
+// ========================================
+
+function crearBurbuja(rol, contenido, recomendaciones) {
+
+    const mensaje =
+        document.createElement("div");
+
+    mensaje.className =
+        "agente-mensaje agente-" + rol;
+
+    const nombre =
+        document.createElement("span");
+
+    nombre.className =
+        "agente-nombre";
+
+    nombre.textContent =
+        rol === "usuario"
+            ? traducir("assistant_you")
+            : traducir("assistant_bot");
+
+    const texto =
+        document.createElement("p");
+
+    texto.className =
+        "agente-texto";
+
+    texto.textContent =
+        contenido;
+
+    mensaje.append(nombre, texto);
+
+    if (
+        recomendaciones &&
+        recomendaciones.length > 0
+    ) {
+
+        const grupo =
+            document.createElement("div");
+
+        grupo.className =
+            "recomendaciones";
+
+        recomendaciones.forEach(producto => {
+
+            grupo.appendChild(
+                crearTarjetaRecomendacion(
+                    producto
+                )
+            );
+
+        });
+
+        mensaje.appendChild(grupo);
+
+    }
+
+    asistenteChat.appendChild(mensaje);
+    asistenteChat.scrollTop =
+        asistenteChat.scrollHeight;
+
+}
+
+
+// ========================================
+// ESTADO DE PROCESAMIENTO
+// ========================================
+
+function mostrarPensando() {
+
+    const burbuja =
+        document.createElement("div");
+
+    burbuja.className =
+        "agente-mensaje agente-asistente agente-pensando";
+
+    burbuja.setAttribute("role", "status");
+
+    burbuja.textContent =
+        traducir("assistant_typing");
+
+    asistenteChat.appendChild(burbuja);
+    asistenteChat.scrollTop =
+        asistenteChat.scrollHeight;
+
+    return burbuja;
+
+}
+
+
+// ========================================
+// ENVIAR PREGUNTA
+// ========================================
+
+async function enviarPregunta(pregunta) {
+
+    const texto =
+        pregunta.trim();
+
+    if (texto === "" || asistenteOcupado) {
+
+        return;
+
+    }
+
+    asistenteOcupado = true;
+
+    crearBurbuja("usuario", texto);
+
+    const pensando =
+        mostrarPensando();
+
+    await new Promise(
+        resolver =>
+            setTimeout(resolver, 900)
+    );
+
+    pensando.remove();
+
+    const resultado =
+        recomendacionesDemo(texto);
+
+    crearBurbuja(
+        "asistente",
+        resultado.respuesta,
+        resultado.productos
+    );
+
+    asistenteOcupado = false;
+
+}
+
+
+// ========================================
+// EVENTOS DEL ASISTENTE
+// ========================================
+
+if (asistenteForm) {
+
+    asistenteForm.addEventListener(
+        "submit",
+        evento => {
+
+            evento.preventDefault();
+
+            enviarPregunta(
+                asistenteInput.value
+            );
+
+            asistenteInput.value = "";
+
+        }
+    );
+
+}
+
+asistentesChips.forEach(chip => {
+
+    chip.addEventListener(
+        "click",
+        () => {
+
+            asistenteInput.value =
+                chip.textContent;
+
+            asistenteInput.focus();
+
+        }
+    );
+
+});
 
 
 // ========================================
