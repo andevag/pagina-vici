@@ -27,13 +27,33 @@ const translations = {
         nav_assistant: "Asistente",
         nav_about: "Sobre MONARQ",
         nav_contact: "Contacto",
+        menu_title: "Explora MONARQ",
+        menu_close: "Cerrar",
+        menu_feature_eyebrow: "Encuentra tu fragancia",
+        menu_assistant_link: "Déjate recomendar",
+        menu_feature_description: "Cuéntale al asistente qué buscas y recibe recomendaciones del catálogo actual.",
+        menu_explore_title: "Explorar por",
+        menu_gender: "Género",
+        menu_female: "Femeninas",
+        menu_male: "Masculinas",
+        menu_popular_title: "Atajos populares",
+        menu_popular: "Más populares",
+        menu_available: "Productos disponibles",
+        menu_fresh: "Fragancias frescas para todos los días",
+        menu_sweet: "Fragancias dulces para una cita",
+        menu_help_title: "Ayuda",
+        menu_help_description: "Resuelve tus preguntas con nuestro equipo.",
+        menu_availability: "Disponibilidad",
+        menu_payments: "Pagos y cambios",
+        menu_shipping: "Envíos",
+        menu_whatsapp: "Contactar por WhatsApp",
         buy: "Comprar",
 
         hero_tag: "Fragancias exclusivas",
         hero_title: "Corona tu estilo",
 
         hero_description:
-            "Descubre la esencia con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.",
+            "Elige una fragancia que hable de ti. MONARQ te acompaña a descubrirla.",
 
         hero_button: "Explorar colección",
 
@@ -117,11 +137,14 @@ const translations = {
 cart_total: "Total:",
         cart_buy: "Comprar por WhatsApp",
 
-        assistant_title: "Asistente de recomendaciones",
-        assistant_intro: "Cuéntanos qué buscas y te ayudaremos a encontrar tu perfume perfecto.",
-        assistant_placeholder: "Ej: busco algo fresco y económico para todos los días",
-        assistant_send: "Preguntar",
-        assistant_note: "Modo demostración: las recomendaciones se calculan sobre nuestro catálogo actual. Próximamente las hará nuestra inteligencia artificial.",
+        featured_eyebrow: "Selección MONARQ",
+        featured_title: "Fragancia destacada",
+        assistant_title: "Encuentra tu fragancia con MONARQ",
+        assistant_intro: "Describe la ocasión, el aroma o tu presupuesto y recibe recomendaciones de nuestro catálogo.",
+        assistant_placeholder: "Cuéntame qué tipo de fragancia buscas...",
+        assistant_send: "Preguntar a MONARQ",
+        assistant_note: "Modo demostración: las recomendaciones se calculan sobre nuestro catálogo actual.",
+        assistant_error_empty: "Escribe qué tipo de fragancia estás buscando para recibir recomendaciones.",
         assistant_typing: "El asistente está pensando...",
         assistant_you: "Tú",
         assistant_bot: "Asistente",
@@ -148,13 +171,33 @@ cart_total: "Total:",
         nav_products: "Products",
         nav_about: "About MONARQ",
         nav_contact: "Contact",
+        menu_title: "Explore MONARQ",
+        menu_close: "Close",
+        menu_feature_eyebrow: "Find your fragrance",
+        menu_assistant_link: "Get a recommendation",
+        menu_feature_description: "Tell the assistant what you are looking for and receive recommendations from the current catalog.",
+        menu_explore_title: "Explore by",
+        menu_gender: "Gender",
+        menu_female: "Women's",
+        menu_male: "Men's",
+        menu_popular_title: "Popular shortcuts",
+        menu_popular: "Most popular",
+        menu_available: "Available products",
+        menu_fresh: "Fresh everyday fragrances",
+        menu_sweet: "Sweet fragrances for a date",
+        menu_help_title: "Help",
+        menu_help_description: "Get your questions answered by our team.",
+        menu_availability: "Availability",
+        menu_payments: "Payments and exchanges",
+        menu_shipping: "Shipping",
+        menu_whatsapp: "Contact us on WhatsApp",
         buy: "Shop Now",
 
         hero_tag: "Exclusive fragrances",
         hero_title: "Crown your style",
 
         hero_description:
-            "Discover the essence with MONARQ, a fragrance that awakens your senses and accompanies you through every moment of triumph.",
+            "Choose a fragrance that speaks for you. MONARQ is here to help you discover it.",
 
         hero_button: "Explore collection",
 
@@ -238,11 +281,14 @@ cart_total: "Total:",
         cart_total: "Total:",
         cart_buy: "Buy via WhatsApp",
 
-        assistant_title: "Recommendation assistant",
-        assistant_intro: "Tell us what you're looking for and we'll help you find the perfect fragrance.",
-        assistant_placeholder: "E.g. I'm looking for something fresh and affordable for every day",
-        assistant_send: "Ask",
-        assistant_note: "Demo mode: recommendations are calculated from our current catalog. Soon this will be powered by our artificial intelligence.",
+        featured_eyebrow: "MONARQ selection",
+        featured_title: "Featured fragrance",
+        assistant_title: "Find your fragrance with MONARQ",
+        assistant_intro: "Describe the occasion, scent, or your budget and receive recommendations from our catalog.",
+        assistant_placeholder: "Tell me what kind of fragrance you are looking for...",
+        assistant_send: "Ask MONARQ",
+        assistant_note: "Demo mode: recommendations are calculated from our current catalog.",
+        assistant_error_empty: "Tell us what kind of fragrance you are looking for to receive recommendations.",
         assistant_typing: "The assistant is thinking...",
         assistant_you: "You",
         assistant_bot: "Assistant",
@@ -2024,6 +2070,16 @@ const asistenteInput =
         "assistant-input"
     );
 
+const asistenteEstado =
+    document.getElementById(
+        "assistant-status"
+    );
+
+const asistenteBoton =
+    asistenteForm?.querySelector(
+        'button[type="submit"]'
+    );
+
 const asistentesChips =
     document.querySelectorAll(
         ".assistant-chips .chip"
@@ -2443,13 +2499,33 @@ async function enviarPregunta(pregunta) {
     const texto =
         pregunta.trim();
 
-    if (texto === "" || asistenteOcupado) {
+    if (texto === "") {
 
-        return;
+        if (asistenteEstado) {
+            asistenteEstado.textContent =
+                traducir("assistant_error_empty");
+        }
+
+        asistenteInput?.focus();
+        return false;
+
+    }
+
+    if (asistenteOcupado) {
+
+        return false;
 
     }
 
     asistenteOcupado = true;
+
+    if (asistenteEstado) {
+        asistenteEstado.textContent = "";
+    }
+
+    if (asistenteBoton) {
+        asistenteBoton.disabled = true;
+    }
 
     crearBurbuja("usuario", texto);
 
@@ -2474,6 +2550,12 @@ async function enviarPregunta(pregunta) {
 
     asistenteOcupado = false;
 
+    if (asistenteBoton) {
+        asistenteBoton.disabled = false;
+    }
+
+    return true;
+
 }
 
 
@@ -2485,15 +2567,17 @@ if (asistenteForm) {
 
     asistenteForm.addEventListener(
         "submit",
-        evento => {
+        async evento => {
 
             evento.preventDefault();
 
-            enviarPregunta(
+            const enviada = await enviarPregunta(
                 asistenteInput.value
             );
 
-            asistenteInput.value = "";
+            if (enviada) {
+                asistenteInput.value = "";
+            }
 
         }
     );
