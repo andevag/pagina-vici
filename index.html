@@ -26,7 +26,7 @@
                     <li><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a></li>
                     <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
                 </ul>
-                <a href="#carrito" class="btn-nav cart-button" id="cart-button"><span class="cart-icon" aria-hidden="true">↗</span><span data-i18n="cart">Carrito</span><span id="cart-count">0</span></a>
+                <button type="button" class="btn-nav cart-button" id="cart-button" aria-label="Abrir carrito" aria-controls="cart-panel" aria-expanded="false"><span class="cart-icon" aria-hidden="true">↗</span><span data-i18n="cart">Carrito</span><span id="cart-count">0</span></button>
                 <div class="language-selector" aria-label="Idioma"><button id="lang-es" onclick="changeLanguage('es')">ES</button><span>/</span><button id="lang-en" onclick="changeLanguage('en')">EN</button></div>
             </div>
         </nav>
@@ -72,6 +72,19 @@
                     <a class="menu-whatsapp" href="https://wa.me/573053779384" target="_blank" rel="noopener">Contactar por WhatsApp <span aria-hidden="true">↗</span></a>
                 </div>
             </section>
+        </div>
+    </aside>
+
+    <div class="cart-backdrop" hidden></div>
+    <aside class="cart-panel" id="cart-panel" aria-labelledby="cart-panel-title" aria-hidden="true">
+        <div class="cart-panel-head">
+            <h2 id="cart-panel-title" data-i18n="cart_title">Tu carrito</h2>
+            <button class="cart-close" type="button" aria-label="Cerrar carrito">Cerrar <span aria-hidden="true">×</span></button>
+        </div>
+        <div class="cart-panel-content" id="cart-container">
+            <div id="cart-empty"><p data-i18n="cart_empty">Tu carrito está vacío.</p><a href="#productos" class="btn-hero" data-close-cart data-i18n="cart_explore">Explorar productos</a></div>
+            <div id="cart-products"></div>
+            <div id="cart-summary"><h3 data-i18n="cart_summary">Resumen de compra</h3><p><span data-i18n="cart_total">Total:</span><strong id="cart-total">$0 COP</strong></p><button id="cart-whatsapp" class="btn-product" data-i18n="cart_buy">Comprar por WhatsApp</button></div>
         </div>
     </aside>
 
@@ -134,15 +147,6 @@
                 <button type="submit" class="btn-hero" data-i18n="assistant_send">Preguntar</button>
             </form>
             <p class="assistant-demo-note" role="note" data-i18n="assistant_note">Modo demostración: las recomendaciones se calculan sobre nuestro catálogo actual. Próximamente las hará nuestra inteligencia artificial.</p>
-        </section>
-
-        <section class="cart-section" id="carrito">
-            <h2 class="section-title" data-i18n="cart_title">Tu carrito</h2><div class="section-line"></div>
-            <div id="cart-container">
-                <div id="cart-empty"><p data-i18n="cart_empty">Tu carrito está vacío.</p><a href="#productos" class="btn-hero" data-i18n="cart_explore">Explorar productos</a></div>
-                <div id="cart-products"></div>
-                <div id="cart-summary"><h3 data-i18n="cart_summary">Resumen de compra</h3><p><span data-i18n="cart_total">Total:</span><strong id="cart-total">$0 COP</strong></p><button id="cart-whatsapp" class="btn-product" data-i18n="cart_buy">Comprar por WhatsApp</button></div>
-            </div>
         </section>
 
         <section class="benefits" id="beneficios">

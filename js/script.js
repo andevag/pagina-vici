@@ -1399,6 +1399,87 @@ document.addEventListener("keydown", event => {
 });
 
 // ========================================
+// PANEL DEL CARRITO
+// ========================================
+
+const cartButton = document.getElementById("cart-button");
+const cartPanel = document.getElementById("cart-panel");
+const cartBackdrop = document.querySelector(".cart-backdrop");
+const cartClose = document.querySelector(".cart-close");
+let ultimoFocoCarrito = null;
+
+function cerrarPanelCarrito() {
+    if (!cartPanel || !cartButton) return;
+
+    cartPanel.classList.remove("is-open");
+    cartPanel.setAttribute("aria-hidden", "true");
+    cartButton.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("cart-open");
+
+    if (cartBackdrop) cartBackdrop.hidden = true;
+    if (ultimoFocoCarrito) ultimoFocoCarrito.focus();
+}
+
+function abrirPanelCarrito() {
+    if (!cartPanel || !cartButton) return;
+
+    if (discoveryMenu?.classList.contains("is-open")) {
+        cerrarMenuDescubrimiento();
+    }
+
+    ultimoFocoCarrito = document.activeElement;
+    cartPanel.classList.add("is-open");
+    cartPanel.setAttribute("aria-hidden", "false");
+    cartButton.setAttribute("aria-expanded", "true");
+    document.body.classList.add("cart-open");
+
+    if (cartBackdrop) cartBackdrop.hidden = false;
+    if (cartClose) cartClose.focus();
+}
+
+if (cartButton && cartPanel) {
+    cartButton.addEventListener("click", () => {
+        if (cartPanel.classList.contains("is-open")) {
+            cerrarPanelCarrito();
+        } else {
+            abrirPanelCarrito();
+        }
+    });
+}
+
+if (cartClose) cartClose.addEventListener("click", cerrarPanelCarrito);
+if (cartBackdrop) cartBackdrop.addEventListener("click", cerrarPanelCarrito);
+
+document.querySelectorAll("[data-close-cart]").forEach(link => {
+    link.addEventListener("click", cerrarPanelCarrito);
+});
+
+document.addEventListener("keydown", event => {
+    if (!cartPanel?.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+        cerrarPanelCarrito();
+        return;
+    }
+
+    if (event.key === "Tab") {
+        const elementos = Array.from(cartPanel.querySelectorAll(
+            "a[href], button:not([disabled])"
+        )).filter(elemento => elemento.getClientRects().length > 0);
+        const primero = elementos[0];
+        const ultimo = elementos[elementos.length - 1];
+
+        if (event.shiftKey && document.activeElement === primero) {
+            event.preventDefault();
+            ultimo.focus();
+        } else if (!event.shiftKey && document.activeElement === ultimo) {
+            event.preventDefault();
+            primero.focus();
+        }
+    }
+});
+
+// ========================================
 // FILTROS DEL MENÚ
 // ========================================
 

@@ -98,6 +98,17 @@ img { display: block; }
 .menu-whatsapp { color: #76562e !important; font-weight: 700; margin-top: 5px; }
 body.menu-open { overflow: hidden; }
 
+/* Panel lateral del carrito */
+.cart-backdrop { background: rgba(28, 26, 23, .38); inset: 0; position: fixed; z-index: 19; }
+.cart-panel { background: var(--surface); box-shadow: -18px 0 46px rgba(28, 26, 23, .16); display: flex; flex-direction: column; height: 100dvh; max-width: 480px; position: fixed; right: 0; top: 0; transform: translateX(105%); transition: transform .28s ease; width: min(100%, 480px); z-index: 20; }
+.cart-panel.is-open { transform: translateX(0); }
+.cart-panel-head { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 22px 24px; }
+.cart-panel-head h2 { font: 600 2rem var(--serif); }
+.cart-close { align-items: center; background: transparent; border: 0; color: var(--muted); cursor: pointer; display: inline-flex; font: 600 .74rem var(--sans); gap: 7px; letter-spacing: .07em; text-transform: uppercase; }
+.cart-close span { font-size: 1.5rem; font-weight: 400; line-height: .7; }
+.cart-panel-content { display: flex; flex: 1; flex-direction: column; overflow-y: auto; padding: 24px; }
+body.cart-open { overflow: hidden; }
+
 /* 03 PANTALLAS: hero and product discovery */
 .hero { align-items: center; display: flex; gap: clamp(50px, 8vw, 120px); justify-content: space-between; min-height: 100vh; overflow: hidden; padding: 150px clamp(20px, 7vw, 110px) 90px; position: relative; }
 .hero::before { background: radial-gradient(circle, rgba(195, 155, 98, .20), transparent 66%); content: ""; height: 620px; position: absolute; right: -140px; top: 60px; width: 620px; }
@@ -121,7 +132,7 @@ body.menu-open { overflow: hidden; }
 .showcase-button:hover { background: var(--champagne); color: var(--ink); transform: translateY(-2px); }
 
 /* 02 UI: collection, components and states */
-.products, .benefits, .cart-section, .assistant { padding: clamp(70px, 9vw, 110px) clamp(20px, 7vw, 120px); }
+.products, .benefits, .assistant { padding: clamp(70px, 9vw, 110px) clamp(20px, 7vw, 120px); }
 .products { background: var(--surface); }
 .section-title { font: 600 clamp(2.6rem, 5vw, 4.2rem)/.92 var(--serif); letter-spacing: -.03em; text-align: center; }
 .section-line { background: var(--champagne); border-radius: 2px; height: 2px; margin: 20px auto 50px; width: 48px; }
@@ -193,9 +204,8 @@ body.menu-open { overflow: hidden; }
 .about-text p { color: var(--muted); margin-bottom: 20px; max-width: 500px; }
 .about-image img { border-radius: var(--radio); display: block; filter: sepia(.12); max-height: 570px; object-fit: cover; width: 100%; }
 
-/* 02 UI: cart window */
-#cart-container { margin: auto; max-width: 900px; }
-#cart-empty { padding: 35px 0; text-align: center; } #cart-empty p { margin-bottom: 22px; }
+/* 02 UI: cart */
+#cart-empty { margin: auto 0; padding: 35px 0; text-align: center; } #cart-empty p { margin-bottom: 22px; }
 #cart-products { display: flex; flex-direction: column; gap: 10px; }
 .cart-item, #cart-summary { background: var(--card); border: 1px solid var(--line); border-radius: var(--radio-suave); padding: 17px; }
 .cart-item { align-items: center; display: flex; gap: 18px; }
@@ -271,7 +281,8 @@ body.menu-open { overflow: hidden; }
     .language-selector { gap: 4px; }
     .discovery-menu-head, .discovery-menu-content { padding-left: 18px; padding-right: 18px; }
     .hero-content h2 { font-size: 3.2rem; }
-    .products, .benefits, .cart-section, .assistant { padding-left: 18px; padding-right: 18px; }
+    .products, .benefits, .assistant { padding-left: 18px; padding-right: 18px; }
+    .cart-panel-head, .cart-panel-content { padding-left: 18px; padding-right: 18px; }
     .benefits-container { grid-template-columns: 1fr; }
     .cart-item { align-items: flex-start; flex-wrap: wrap; }
     .cart-remove { margin-left: auto; }
