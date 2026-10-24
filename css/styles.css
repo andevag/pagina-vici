@@ -237,6 +237,40 @@ body.product-detail-open { overflow: hidden; }
 .about-text p { color: var(--muted); margin-bottom: 20px; max-width: 500px; }
 .about-image img { border-radius: var(--radio); display: block; filter: sepia(.12); max-height: 570px; object-fit: cover; width: 100%; }
 
+/* 03 EXPERIENCIAS DE CLIENTES */
+.experiences { background: var(--surface); padding: clamp(70px, 9vw, 110px) clamp(20px, 7vw, 120px); }
+.experiences-heading { align-items: end; display: flex; gap: 30px; justify-content: space-between; margin: auto; max-width: 980px; }
+.experiences-heading .section-title { text-align: left; }
+.experiences-eyebrow { color: #9d7743; font-size: .7rem; font-weight: 700; letter-spacing: .16em; margin-bottom: 12px; text-transform: uppercase; }
+.experiences-heading p:not(.experiences-eyebrow) { color: var(--muted); margin-top: 16px; max-width: 510px; }
+.experiences-heading .btn-hero { flex-shrink: 0; }
+.experiences-gallery { margin: 42px auto 0; max-width: 980px; }
+.experiences-empty { align-items: center; background: var(--card); border: 1px dashed var(--line); border-radius: var(--radio); display: flex; flex-direction: column; min-height: 230px; justify-content: center; padding: 30px; text-align: center; }
+.experiences-empty span { color: var(--champagne); font-size: 2rem; }
+.experiences-empty h3 { font: 600 1.8rem var(--serif); margin: 12px 0 6px; }
+.experiences-empty p, .experiences-note { color: var(--muted); font-size: .85rem; max-width: 460px; }
+.experiences-note { margin: 16px auto 0; text-align: center; }
+.experience-dialog { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radio); box-shadow: var(--sombra); color: var(--ink); max-height: min(90dvh, 780px); max-width: 620px; padding: 0; width: calc(100% - 32px); }
+.experience-dialog::backdrop { background: rgba(28, 26, 23, .48); }
+.experience-form { overflow-y: auto; padding: 28px; }
+.experience-dialog-head { align-items: start; display: flex; justify-content: space-between; gap: 20px; }
+.experience-dialog-head h2 { font: 600 clamp(2.2rem, 6vw, 3rem)/.9 var(--serif); }
+.experience-dialog-close { background: transparent; border: 0; color: var(--muted); cursor: pointer; font-size: 2rem; line-height: 1; padding: 0; }
+.experience-form-intro { color: var(--muted); font-size: .9rem; margin: 18px 0 24px; }
+.experience-field { display: grid; gap: 7px; margin-top: 17px; }
+.experience-field label { font-size: .82rem; font-weight: 700; }
+.optional-label { color: var(--muted); font-weight: 400; }
+.experience-field input, .experience-field select, .experience-field textarea { background: var(--card); border: 1px solid var(--line); border-radius: 9px; color: var(--ink); font: 400 .95rem var(--sans); padding: 11px 12px; width: 100%; }
+.experience-field input[type="file"] { background: transparent; padding: 9px 0; }
+.experience-field textarea { resize: vertical; }
+.experience-field input:focus, .experience-field select:focus, .experience-field textarea:focus { border-color: var(--champagne); box-shadow: 0 0 0 3px rgba(195, 155, 98, .18); outline: none; }
+.experience-requirements, .experience-local-note { color: var(--muted); font-size: .75rem; }
+.experience-form-message { color: var(--danger); font-size: .84rem; font-weight: 600; min-height: 1.3em; margin-top: 16px; }
+.experience-form-message.is-success { color: var(--success); }
+.experience-form-actions { align-items: center; display: flex; gap: 16px; margin-top: 8px; }
+.experience-cancel { background: transparent; border: 0; color: var(--muted); cursor: pointer; font: 600 .8rem var(--sans); text-decoration: underline; }
+.experience-local-note { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; }
+
 /* 02 UI: cart */
 #cart-empty { margin: auto 0; padding: 35px 0; text-align: center; } #cart-empty p { margin-bottom: 22px; }
 #cart-products { display: flex; flex-direction: column; gap: 10px; }
@@ -299,6 +333,7 @@ body.product-detail-open { overflow: hidden; }
     .about-content { grid-template-columns: 1fr; }
     .about-text .section-title { text-align: center; }
     .about-text .section-line { margin-left: auto; }
+    .experiences-heading { align-items: flex-start; flex-direction: column; }
     .footer-content { grid-template-columns: 1fr; text-align: center; }
     .footer a { margin: 10px 0; }
 }
@@ -322,6 +357,8 @@ body.product-detail-open { overflow: hidden; }
     .cart-panel-head, .cart-panel-content { padding-left: 18px; padding-right: 18px; }
     .product-detail-head, .product-detail-content { padding-left: 18px; padding-right: 18px; }
     .product-detail-content > img { height: 260px; }
+    .experience-form { padding: 20px; }
+    .experience-form-actions { align-items: stretch; flex-direction: column; }
     .benefits-container { grid-template-columns: 1fr; }
     .cart-item { align-items: flex-start; flex-wrap: wrap; }
     .cart-remove { margin-left: auto; }

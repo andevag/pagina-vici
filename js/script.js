@@ -1714,6 +1714,95 @@ document.addEventListener("keydown", event => {
 });
 
 // ========================================
+// EXPERIENCIAS DE CLIENTES
+// ========================================
+
+const dialogoExperiencia = document.getElementById("experience-dialog");
+const abrirDialogoExperiencia = document.getElementById("open-experience-dialog");
+const cerrarDialogoExperiencia = document.querySelector(".experience-dialog-close");
+const cancelarExperiencia = document.querySelector(".experience-cancel");
+const formularioExperiencia = document.getElementById("experience-form");
+const selectorExperienciaProducto = document.getElementById("experience-product");
+const mensajeExperiencia = document.getElementById("experience-form-message");
+
+if (selectorExperienciaProducto) {
+    productos.slice().sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
+        .forEach(producto => {
+            const opcion = document.createElement("option");
+            opcion.value = producto.nombre;
+            opcion.textContent = `${producto.nombre} (${producto.marca})`;
+            selectorExperienciaProducto.appendChild(opcion);
+        });
+}
+
+function cerrarFormularioExperiencia() {
+    if (dialogoExperiencia?.open) dialogoExperiencia.close();
+}
+
+if (abrirDialogoExperiencia && dialogoExperiencia) {
+    abrirDialogoExperiencia.addEventListener("click", () => {
+        dialogoExperiencia.showModal();
+        document.getElementById("experience-product")?.focus();
+    });
+}
+
+if (cerrarDialogoExperiencia) {
+    cerrarDialogoExperiencia.addEventListener("click", cerrarFormularioExperiencia);
+}
+
+if (cancelarExperiencia) cancelarExperiencia.addEventListener("click", cerrarFormularioExperiencia);
+
+if (dialogoExperiencia) {
+    dialogoExperiencia.addEventListener("click", evento => {
+        if (evento.target === dialogoExperiencia) cerrarFormularioExperiencia();
+    });
+}
+
+function mostrarMensajeExperiencia(mensaje, esExito) {
+    if (!mensajeExperiencia) return;
+    mensajeExperiencia.textContent = mensaje;
+    mensajeExperiencia.classList.toggle("is-success", Boolean(esExito));
+}
+
+if (formularioExperiencia) {
+    formularioExperiencia.addEventListener("submit", async evento => {
+        evento.preventDefault();
+
+        const comentario = document.getElementById("experience-comment");
+        const imagen = document.getElementById("experience-image");
+        const botonEnvio = formularioExperiencia.querySelector("button[type='submit']");
+        const texto = comentario?.value.trim() || "";
+        const archivo = imagen?.files?.[0];
+
+        if (texto.length < 20 || texto.length > 600) {
+            mostrarMensajeExperiencia("Escribe una experiencia de entre 20 y 600 caracteres.", false);
+            comentario?.focus();
+            return;
+        }
+
+        if (archivo && !["image/jpeg", "image/png", "image/webp"].includes(archivo.type)) {
+            mostrarMensajeExperiencia("La foto debe estar en formato JPG, PNG o WEBP.", false);
+            imagen?.focus();
+            return;
+        }
+
+        if (archivo && archivo.size > 5 * 1024 * 1024) {
+            mostrarMensajeExperiencia("La foto supera el límite de 5 MB.", false);
+            imagen?.focus();
+            return;
+        }
+
+        if (botonEnvio) botonEnvio.disabled = true;
+        mostrarMensajeExperiencia("Validando la información y preparando el envío...", true);
+        await new Promise(resolver => setTimeout(resolver, 350));
+
+        // No se transmite ni conserva información personal sin un servicio seguro de revisión.
+        mostrarMensajeExperiencia("El envío no se realizó: MONARQ aún no tiene un canal seguro de recepción y revisión configurado.", false);
+        if (botonEnvio) botonEnvio.disabled = false;
+    });
+}
+
+// ========================================
 // ORDEN DE LA COLECCION
 // ========================================
 

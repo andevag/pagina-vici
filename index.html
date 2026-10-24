@@ -189,7 +189,32 @@
         <section class="about" id="sobre">
             <div class="about-content"><div class="about-text"><h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2><div class="section-line"></div><p data-i18n="about_text_1">En MONARQ creemos que un perfume no solo deja un aroma, deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, elegancia y confianza.</p><p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados, combinando calidad, estilo y una excelente atención para que cada cliente encuentre el aroma perfecto.</p><a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a></div><div class="about-image"><img src="assets/images/yumyum.png" alt="Perfume MONARQ"></div></div>
         </section>
+
+        <section class="experiences" id="experiencias" aria-labelledby="experiences-title">
+            <div class="experiences-heading">
+                <div><p class="experiences-eyebrow">Comunidad MONARQ</p><h2 class="section-title" id="experiences-title">Tu historia MONARQ</h2><p>Comparte el momento y la fragancia que dejaron una impresión en ti.</p></div>
+                <button class="btn-hero" type="button" id="open-experience-dialog">Comparte tu experiencia</button>
+            </div>
+            <div class="experiences-gallery" id="experiences-gallery" aria-live="polite">
+                <div class="experiences-empty"><span aria-hidden="true">✦</span><h3>Aún no hay historias publicadas</h3><p>Tu experiencia podría ser la primera en inspirar a la comunidad MONARQ.</p></div>
+            </div>
+            <p class="experiences-note">Las experiencias se publican únicamente después de su revisión por MONARQ.</p>
+        </section>
     </main>
+
+    <dialog class="experience-dialog" id="experience-dialog" aria-labelledby="experience-dialog-title">
+        <form class="experience-form" id="experience-form" novalidate>
+            <div class="experience-dialog-head"><div><p class="experiences-eyebrow">Comunidad MONARQ</p><h2 id="experience-dialog-title">Comparte tu experiencia</h2></div><button class="experience-dialog-close" type="button" aria-label="Cerrar formulario">×</button></div>
+            <p class="experience-form-intro">Cuando MONARQ habilite la recepción, cada experiencia quedará pendiente de revisión antes de aparecer públicamente.</p>
+            <div class="experience-field"><label for="experience-product">Fragancia</label><select id="experience-product" name="product"><option value="">Prefiero no seleccionarla</option></select></div>
+            <div class="experience-field"><label for="experience-image">Foto de tu perfume</label><input id="experience-image" name="image" type="file" accept="image/jpeg,image/png,image/webp"><p class="experience-requirements">JPG, PNG o WEBP. Máximo 5 MB. Comparte solo imágenes que tengas derecho a usar.</p></div>
+            <div class="experience-field"><label for="experience-comment">Tu experiencia <span aria-hidden="true">*</span></label><textarea id="experience-comment" name="comment" rows="5" minlength="20" maxlength="600" required aria-describedby="experience-comment-help"></textarea><p id="experience-comment-help" class="experience-requirements">Entre 20 y 600 caracteres.</p></div>
+            <div class="experience-field"><label for="experience-name">Nombre para mostrar <span class="optional-label">Opcional</span></label><input id="experience-name" name="displayName" type="text" maxlength="60" autocomplete="name"></div>
+            <p class="experience-form-message" id="experience-form-message" role="status" aria-live="polite"></p>
+            <div class="experience-form-actions"><button class="btn-hero" type="submit">Enviar para revisión</button><button class="experience-cancel" type="button">Cancelar</button></div>
+            <p class="experience-local-note">Los envíos aún no se almacenan en línea: MONARQ necesita habilitar un canal seguro de revisión para recibirlos.</p>
+        </form>
+    </dialog>
 
     <footer class="footer" id="contacto"><div class="footer-content"><div class="footer-brand"><h2>MONARQ</h2><p data-i18n="footer_description">Fragancias que dejan una impresión.</p></div><div class="footer-links"><h3 data-i18n="footer_links">Enlaces</h3><a href="#inicio" data-i18n="nav_home">Inicio</a><a href="#productos" data-i18n="nav_products">Productos</a><a href="#sobre" data-i18n="nav_about">Sobre MONARQ</a><a href="#contacto" data-i18n="nav_contact">Contacto</a></div><div class="footer-contact"><h3 data-i18n="footer_contact">Contacto</h3><p>WhatsApp</p><a href="https://wa.me/573053779384" target="_blank" rel="noopener">+57 305 3779384</a><a href="https://www.instagram.com/vici_perfumes/" target="_blank" rel="noopener">Instagram</a><a href="mailto:vici_perfumes@gmail.com" data-i18n="email">Correo Electrónico</a></div></div><div class="footer-bottom"><p data-i18n="copyright">© 2026 MONARQ. Todos los derechos reservados.</p></div></footer>
     <script src="js/productos.js"></script>
