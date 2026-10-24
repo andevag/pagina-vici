@@ -30,10 +30,10 @@ const translations = {
         buy: "Comprar",
 
         hero_tag: "Fragancias exclusivas",
-        hero_title: "El aroma de la victoria",
+        hero_title: "Corona tu estilo",
 
         hero_description:
-            "Descubre la esencia de la victoria con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.",
+            "Descubre la esencia con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.",
 
         hero_button: "Explorar colección",
 
@@ -151,10 +151,10 @@ cart_total: "Total:",
         buy: "Shop Now",
 
         hero_tag: "Exclusive fragrances",
-        hero_title: "The scent of victory",
+        hero_title: "Crown your style",
 
         hero_description:
-            "Discover the essence of victory with MONARQ, a fragrance that awakens your senses and accompanies you through every moment of triumph.",
+            "Discover the essence with MONARQ, a fragrance that awakens your senses and accompanies you through every moment of triumph.",
 
         hero_button: "Explore collection",
 
@@ -1073,10 +1073,15 @@ function mostrarProductos() {
     contenedor.innerHTML = "";
 
 
+    const productosFiltrados =
+        filtroCatalogo
+            ? productos.filter(productoCoincideConFiltro)
+            : productos;
+
     const ordenados =
         typeof ordenarProductos === "function"
-            ? ordenarProductos(productos, ordenActual)
-            : productos;
+            ? ordenarProductos(productosFiltrados, ordenActual)
+            : productosFiltrados;
 
 
     ordenados.forEach(producto => {
@@ -1308,23 +1313,146 @@ function mostrarShowcase(index) {
 }
 
 // ========================================
-// CAMBIAR IDIOMA
+// MENÚ DE DESCUBRIMIENTO
 // ========================================
 
 const navToggle = document.querySelector(".nav-toggle");
-const navShell = document.getElementById("site-navigation");
+const discoveryMenu = document.getElementById("discovery-menu");
+const menuBackdrop = document.querySelector(".menu-backdrop");
+const menuClose = document.querySelector(".menu-close");
+let ultimoFocoMenu = null;
 
-if (navToggle && navShell) {
+function cerrarMenuDescubrimiento() {
+    if (!discoveryMenu || !navToggle) return;
+
+    discoveryMenu.classList.remove("is-open");
+    discoveryMenu.setAttribute("aria-hidden", "true");
+    navToggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+
+    if (menuBackdrop) {
+        menuBackdrop.hidden = true;
+    }
+
+    if (ultimoFocoMenu) {
+        ultimoFocoMenu.focus();
+    }
+}
+
+function abrirMenuDescubrimiento() {
+    if (!discoveryMenu || !navToggle) return;
+
+    ultimoFocoMenu = document.activeElement;
+    discoveryMenu.classList.add("is-open");
+    discoveryMenu.setAttribute("aria-hidden", "false");
+    navToggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("menu-open");
+
+    if (menuBackdrop) {
+        menuBackdrop.hidden = false;
+    }
+
+    const primerEnlace = discoveryMenu.querySelector("a, button");
+    if (primerEnlace) primerEnlace.focus();
+}
+
+if (navToggle && discoveryMenu) {
     navToggle.addEventListener("click", () => {
-        const isOpen = navShell.classList.toggle("is-open");
-        navToggle.setAttribute("aria-expanded", String(isOpen));
+        if (discoveryMenu.classList.contains("is-open")) {
+            cerrarMenuDescubrimiento();
+        } else {
+            abrirMenuDescubrimiento();
+        }
     });
 
-    navShell.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            navShell.classList.remove("is-open");
-            navToggle.setAttribute("aria-expanded", "false");
-        });
+    discoveryMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", cerrarMenuDescubrimiento);
+    });
+}
+
+if (menuClose) menuClose.addEventListener("click", cerrarMenuDescubrimiento);
+if (menuBackdrop) menuBackdrop.addEventListener("click", cerrarMenuDescubrimiento);
+
+document.addEventListener("keydown", event => {
+    if (!discoveryMenu?.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+        cerrarMenuDescubrimiento();
+        return;
+    }
+
+    if (event.key === "Tab") {
+        const elementos = discoveryMenu.querySelectorAll(
+            "a[href], button:not([disabled])"
+        );
+        const primero = elementos[0];
+        const ultimo = elementos[elementos.length - 1];
+
+        if (event.shiftKey && document.activeElement === primero) {
+            event.preventDefault();
+            ultimo.focus();
+        } else if (!event.shiftKey && document.activeElement === ultimo) {
+            event.preventDefault();
+            primero.focus();
+        }
+    }
+});
+
+// ========================================
+// FILTROS DEL MENÚ
+// ========================================
+
+let filtroCatalogo = null;
+
+const textosFiltroCatalogo = {
+    female: "Fragancias femeninas",
+    male: "Fragancias masculinas",
+    unisex: "Fragancias unisex",
+    popular: "Fragancias más populares",
+    available: "Productos disponibles"
+};
+
+function productoCoincideConFiltro(producto) {
+    switch (filtroCatalogo) {
+        case "female":
+            return producto.categoria === "category_female";
+        case "male":
+            return producto.categoria === "category_male";
+        case "unisex":
+            return producto.categoria === "category_unisex";
+        case "popular":
+            return producto.etiqueta === "showcase_most_sold";
+        case "available":
+            return producto.stock > 0;
+        default:
+            return true;
+    }
+}
+
+function actualizarEstadoFiltroCatalogo() {
+    const estado = document.getElementById("catalog-filter-status");
+    if (!estado) return;
+
+    estado.hidden = !filtroCatalogo;
+    if (filtroCatalogo) {
+        estado.querySelector("span").textContent = textosFiltroCatalogo[filtroCatalogo];
+    }
+}
+
+document.querySelectorAll("[data-product-filter]").forEach(link => {
+    link.addEventListener("click", () => {
+        filtroCatalogo = link.dataset.productFilter;
+        actualizarEstadoFiltroCatalogo();
+        mostrarProductos();
+    });
+});
+
+const limpiarFiltroCatalogo = document.getElementById("clear-catalog-filter");
+if (limpiarFiltroCatalogo) {
+    limpiarFiltroCatalogo.addEventListener("click", () => {
+        filtroCatalogo = null;
+        actualizarEstadoFiltroCatalogo();
+        mostrarProductos();
     });
 }
 
@@ -2039,6 +2167,13 @@ asistentesChips.forEach(chip => {
         }
     );
 
+});
+
+document.querySelectorAll("[data-assistant-prompt]").forEach(link => {
+    link.addEventListener("click", () => {
+        const pregunta = link.dataset.assistantPrompt;
+        if (pregunta) enviarPregunta(pregunta);
+    });
 });
 
 

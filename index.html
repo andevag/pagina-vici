@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MONARQ. Perfumes seleccionados para dejar una impresión.">
     <link rel="icon" href="assets/images/logomq.png">
-    <title>MONARQ | El aroma de la victoria</title>
+    <title>MONARQ | Corona tu estilo.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,8 +14,10 @@
 <body>
     <header>
         <nav class="navbar" aria-label="Navegación principal">
-            <a class="logo" href="#inicio" aria-label="MONARQ, inicio"><img class="logo-mark" src="assets/images/mq-lgp.png" alt=""><span class="logo-name">MONARQ</span></a>
-            <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button>
+            <div class="nav-brand">
+                <button class="nav-toggle" type="button" aria-label="Abrir menú de exploración" aria-controls="discovery-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <a class="logo" href="#inicio" aria-label="MONARQ, inicio"><img class="logo-mark" src="assets/images/mq-lgp.png" alt=""><span class="logo-name">MONARQ</span></a>
+            </div>
             <div class="nav-shell" id="site-navigation">
                 <ul class="nav-links">
                     <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
@@ -30,12 +32,55 @@
         </nav>
     </header>
 
+    <div class="menu-backdrop" hidden></div>
+    <aside class="discovery-menu" id="discovery-menu" aria-label="Explorar fragancias" aria-hidden="true">
+        <div class="discovery-menu-head">
+            <span>Explora MONARQ</span>
+            <button class="menu-close" type="button" aria-label="Cerrar menú">Cerrar <span aria-hidden="true">×</span></button>
+        </div>
+        <div class="discovery-menu-content">
+            <section class="menu-feature">
+                <p class="menu-eyebrow">Encuentra tu fragancia</p>
+                <a class="menu-assistant-link" href="#asistente">Déjate recomendar <span aria-hidden="true">→</span></a>
+                <p>Cuéntale al asistente qué buscas y recibe recomendaciones del catálogo actual.</p>
+            </section>
+            <section class="menu-section" aria-labelledby="menu-explore-title">
+                <h2 id="menu-explore-title">Explorar por</h2>
+                <p class="menu-label">Género</p>
+                <div class="menu-links">
+                    <a href="#productos" data-product-filter="female">Femeninas</a>
+                    <a href="#productos" data-product-filter="male">Masculinas</a>
+                    <a href="#productos" data-product-filter="unisex">Unisex</a>
+                </div>
+            </section>
+            <section class="menu-section" aria-labelledby="menu-popular-title">
+                <h2 id="menu-popular-title">Atajos populares</h2>
+                <div class="menu-links">
+                    <a href="#productos" data-product-filter="popular">Más populares</a>
+                    <a href="#productos" data-product-filter="available">Productos disponibles</a>
+                    <a href="#asistente" data-assistant-prompt="Busco algo fresco para el día a día.">Fragancias frescas para todos los días</a>
+                    <a href="#asistente" data-assistant-prompt="Busco un perfume dulce para una cita.">Fragancias dulces para una cita</a>
+                </div>
+            </section>
+            <section class="menu-section menu-help" aria-labelledby="menu-help-title">
+                <h2 id="menu-help-title">Ayuda</h2>
+                <p>Resuelve tus preguntas con nuestro equipo.</p>
+                <div class="menu-links">
+                    <a href="https://wa.me/573053779384?text=Hola%20MONARQ%2C%20quiero%20consultar%20la%20disponibilidad%20de%20una%20fragancia." target="_blank" rel="noopener">Disponibilidad</a>
+                    <a href="https://wa.me/573053779384?text=Hola%20MONARQ%2C%20tengo%20una%20pregunta%20sobre%20pagos%20o%20cambios." target="_blank" rel="noopener">Pagos y cambios</a>
+                    <a href="https://wa.me/573053779384?text=Hola%20MONARQ%2C%20tengo%20una%20pregunta%20sobre%20env%C3%ADos." target="_blank" rel="noopener">Envíos</a>
+                    <a class="menu-whatsapp" href="https://wa.me/573053779384" target="_blank" rel="noopener">Contactar por WhatsApp <span aria-hidden="true">↗</span></a>
+                </div>
+            </section>
+        </div>
+    </aside>
+
     <main>
         <section class="hero" id="inicio">
             <div class="hero-content">
                 <span class="hero-tag" data-i18n="hero_tag">Fragancias exclusivas</span>
-                <h2 data-i18n="hero_title">El aroma de la victoria</h2>
-                <p data-i18n="hero_description">Descubre la esencia de la victoria con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.</p>
+                <h2 data-i18n="hero_title">Corona tu estilo</h2>
+                <p data-i18n="hero_description">Descubre la esencia con MONARQ, una fragancia que despierta tus sentidos y te acompaña en cada momento de triunfo.</p>
                 <a href="#productos" class="btn-hero" data-i18n="hero_button">Explorar colección</a>
             </div>
             <div class="hero-image">
@@ -65,6 +110,7 @@
                     <option value="genero" data-i18n="sort_genero">Género</option>
                 </select>
             </div>
+            <div class="catalog-filter-status" id="catalog-filter-status" hidden><span></span><button type="button" id="clear-catalog-filter">Ver toda la colección</button></div>
             <div class="products-container"></div>
         </section>
 
@@ -110,7 +156,7 @@
         </section>
 
         <section class="about" id="sobre">
-            <div class="about-content"><div class="about-text"><h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2><div class="section-line"></div><p data-i18n="about_text_1">En MONARQ creemos que un perfume no solo deja un aroma, deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, elegancia y confianza.</p><p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados, combinando calidad, estilo y una excelente atención para que cada cliente encuentre el aroma perfecto.</p><a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a></div><div class="about-image"><img src="assets/images/yumyum.jpg" alt="Perfume MONARQ"></div></div>
+            <div class="about-content"><div class="about-text"><h2 class="section-title" data-i18n="about_title">Sobre MONARQ</h2><div class="section-line"></div><p data-i18n="about_text_1">En MONARQ creemos que un perfume no solo deja un aroma, deja una impresión y buenas experiencias. Cada fragancia refleja personalidad, elegancia y confianza.</p><p data-i18n="about_text_2">Nuestra misión es ofrecer perfumes cuidadosamente seleccionados, combinando calidad, estilo y una excelente atención para que cada cliente encuentre el aroma perfecto.</p><a href="#productos" class="btn-hero" data-i18n="view_collection">Ver Colección</a></div><div class="about-image"><img src="assets/images/yumyum.png" alt="Perfume MONARQ"></div></div>
         </section>
     </main>
 
