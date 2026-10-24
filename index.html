@@ -88,6 +88,15 @@
         </div>
     </aside>
 
+    <div class="product-detail-backdrop" hidden></div>
+    <aside class="product-detail" id="product-detail" aria-labelledby="product-detail-title" aria-hidden="true">
+        <div class="product-detail-head">
+            <h2 id="product-detail-title">Detalle de fragancia</h2>
+            <button class="product-detail-close" type="button" aria-label="Cerrar detalle">Cerrar <span aria-hidden="true">×</span></button>
+        </div>
+        <div class="product-detail-content"></div>
+    </aside>
+
     <main>
         <section class="hero" id="inicio">
             <div class="hero-content">
@@ -112,6 +121,24 @@
 
         <section class="products" id="productos">
             <h2 class="section-title" data-i18n="collection_title">Nuestra Colección</h2><div class="section-line"></div>
+            <div class="catalog-browse" aria-label="Explorar la colección">
+                <p class="catalog-browse-label">Explora la colección</p>
+                <div class="catalog-browse-links">
+                    <button type="button" data-catalog-preset="male">Para él</button>
+                    <button type="button" data-catalog-preset="female">Para ella</button>
+                    <button type="button" data-catalog-preset="unisex">Unisex</button>
+                    <button type="button" data-catalog-preset="popular">Más vendidos</button>
+                </div>
+                <div class="catalog-brands" id="catalog-brands" aria-label="Explorar por marca"></div>
+            </div>
+            <div class="catalog-tools">
+                <button class="catalog-filters-toggle" id="catalog-filters-toggle" type="button" aria-controls="catalog-filters" aria-expanded="false">Filtrar catálogo</button>
+                <div class="catalog-filters" id="catalog-filters">
+                    <div class="catalog-filter-field"><label for="filter-gender">Género</label><select id="filter-gender"><option value="">Todos</option><option value="category_male">Masculino</option><option value="category_female">Femenino</option><option value="category_unisex">Unisex</option></select></div>
+                    <div class="catalog-filter-field"><label for="filter-brand">Marca</label><select id="filter-brand"><option value="">Todas las marcas</option></select></div>
+                    <label class="catalog-stock-filter" for="filter-available"><input id="filter-available" type="checkbox"> Solo disponibles</label>
+                </div>
+            </div>
             <div class="sort-bar">
                 <label class="sort-label" for="sort-select" data-i18n="sort_label">Ordenar por</label>
                 <select class="sort-select" id="sort-select" aria-label="Ordenar la colección">
@@ -123,7 +150,7 @@
                     <option value="genero" data-i18n="sort_genero">Género</option>
                 </select>
             </div>
-            <div class="catalog-filter-status" id="catalog-filter-status" hidden><span></span><button type="button" id="clear-catalog-filter">Ver toda la colección</button></div>
+            <div class="catalog-filter-status" id="catalog-filter-status" aria-live="polite"><span></span><button type="button" id="clear-catalog-filter" hidden>Limpiar filtros</button></div>
             <div class="products-container"></div>
         </section>
 

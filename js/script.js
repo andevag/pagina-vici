@@ -1073,10 +1073,7 @@ function mostrarProductos() {
     contenedor.innerHTML = "";
 
 
-    const productosFiltrados =
-        filtroCatalogo
-            ? productos.filter(productoCoincideConFiltro)
-            : productos;
+    const productosFiltrados = productos.filter(productoPasaFiltros);
 
     const ordenados =
         typeof ordenarProductos === "function"
@@ -1112,6 +1109,8 @@ function mostrarProductos() {
                 </strong>
             </h3>
 
+            <p class="product-brand">${producto.marca}</p>
+
             <p class="type-product">
                 ${traducir(producto.categoria)}
             </p>
@@ -1133,6 +1132,10 @@ function mostrarProductos() {
                 }
 
             </p>
+
+            <button class="product-details" type="button" onclick="verDetalleProducto('${producto.nombre}')">
+                Ver detalles
+            </button>
 
 
             ${
@@ -1480,62 +1483,235 @@ document.addEventListener("keydown", event => {
 });
 
 // ========================================
-// FILTROS DEL MENÚ
+// FILTROS DEL CATÁLOGO
 // ========================================
 
-let filtroCatalogo = null;
-
-const textosFiltroCatalogo = {
-    female: "Fragancias femeninas",
-    male: "Fragancias masculinas",
-    unisex: "Fragancias unisex",
-    popular: "Fragancias más populares",
-    available: "Productos disponibles"
+const filtrosCatalogo = {
+    categoria: "",
+    marca: "",
+    disponible: false,
+    popular: false
 };
 
-function productoCoincideConFiltro(producto) {
-    switch (filtroCatalogo) {
-        case "female":
-            return producto.categoria === "category_female";
-        case "male":
-            return producto.categoria === "category_male";
-        case "unisex":
-            return producto.categoria === "category_unisex";
-        case "popular":
-            return producto.etiqueta === "showcase_most_sold";
-        case "available":
-            return producto.stock > 0;
-        default:
-            return true;
-    }
+function productoPasaFiltros(producto) {
+    return (
+        (!filtrosCatalogo.categoria || producto.categoria === filtrosCatalogo.categoria) &&
+        (!filtrosCatalogo.marca || producto.marca === filtrosCatalogo.marca) &&
+        (!filtrosCatalogo.disponible || producto.stock > 0) &&
+        (!filtrosCatalogo.popular || producto.etiqueta === "showcase_most_sold")
+    );
 }
 
 function actualizarEstadoFiltroCatalogo() {
     const estado = document.getElementById("catalog-filter-status");
+    const limpiar = document.getElementById("clear-catalog-filter");
     if (!estado) return;
 
-    estado.hidden = !filtroCatalogo;
-    if (filtroCatalogo) {
-        estado.querySelector("span").textContent = textosFiltroCatalogo[filtroCatalogo];
+    const activos = [];
+    if (filtrosCatalogo.categoria) activos.push(traducir(filtrosCatalogo.categoria));
+    if (filtrosCatalogo.marca) activos.push(filtrosCatalogo.marca);
+    if (filtrosCatalogo.disponible) activos.push("Disponibles");
+    if (filtrosCatalogo.popular) activos.push("Más vendidos");
+
+    const total = productos.filter(productoPasaFiltros).length;
+    estado.querySelector("span").textContent = activos.length
+        ? `${total} fragancias: ${activos.join(" · ")}`
+        : `${total} fragancias disponibles en la colección`;
+
+    if (limpiar) limpiar.hidden = activos.length === 0;
+}
+
+function sincronizarControlesFiltro() {
+    const genero = document.getElementById("filter-gender");
+    const marca = document.getElementById("filter-brand");
+    const disponible = document.getElementById("filter-available");
+
+    if (genero) genero.value = filtrosCatalogo.categoria;
+    if (marca) marca.value = filtrosCatalogo.marca;
+    if (disponible) disponible.checked = filtrosCatalogo.disponible;
+}
+
+function actualizarOpcionesFiltro() {
+    const genero = document.getElementById("filter-gender");
+    const marca = document.getElementById("filter-brand");
+
+    if (genero) {
+        [...genero.options].forEach(opcion => {
+            if (!opcion.value) return;
+            opcion.disabled = !productos.some(producto =>
+                producto.categoria === opcion.value &&
+                (!filtrosCatalogo.marca || producto.marca === filtrosCatalogo.marca) &&
+                (!filtrosCatalogo.disponible || producto.stock > 0) &&
+                (!filtrosCatalogo.popular || producto.etiqueta === "showcase_most_sold")
+            );
+        });
+    }
+
+    if (marca) {
+        [...marca.options].forEach(opcion => {
+            if (!opcion.value) return;
+            opcion.disabled = !productos.some(producto =>
+                producto.marca === opcion.value &&
+                (!filtrosCatalogo.categoria || producto.categoria === filtrosCatalogo.categoria) &&
+                (!filtrosCatalogo.disponible || producto.stock > 0) &&
+                (!filtrosCatalogo.popular || producto.etiqueta === "showcase_most_sold")
+            );
+        });
     }
 }
 
-document.querySelectorAll("[data-product-filter]").forEach(link => {
-    link.addEventListener("click", () => {
-        filtroCatalogo = link.dataset.productFilter;
-        actualizarEstadoFiltroCatalogo();
-        mostrarProductos();
+function actualizarCatalogo() {
+    sincronizarControlesFiltro();
+    actualizarOpcionesFiltro();
+    actualizarEstadoFiltroCatalogo();
+    mostrarProductos();
+}
+
+function aplicarPreseleccionCatalogo(preseleccion) {
+    filtrosCatalogo.categoria = "";
+    filtrosCatalogo.marca = "";
+    filtrosCatalogo.disponible = false;
+    filtrosCatalogo.popular = false;
+
+    if (preseleccion === "male") filtrosCatalogo.categoria = "category_male";
+    if (preseleccion === "female") filtrosCatalogo.categoria = "category_female";
+    if (preseleccion === "unisex") filtrosCatalogo.categoria = "category_unisex";
+    if (preseleccion === "popular") filtrosCatalogo.popular = true;
+    if (preseleccion === "available") filtrosCatalogo.disponible = true;
+
+    actualizarCatalogo();
+}
+
+function crearExploracionPorMarca() {
+    const contenedor = document.getElementById("catalog-brands");
+    const selector = document.getElementById("filter-brand");
+    if (!contenedor || !selector) return;
+
+    const marcas = [...new Set(productos.map(producto => producto.marca))].sort();
+    marcas.forEach(marca => {
+        const enlace = document.createElement("button");
+        enlace.type = "button";
+        enlace.textContent = marca;
+        enlace.addEventListener("click", () => {
+            filtrosCatalogo.marca = marca;
+            actualizarCatalogo();
+        });
+        contenedor.appendChild(enlace);
+
+        const opcion = document.createElement("option");
+        opcion.value = marca;
+        opcion.textContent = marca;
+        selector.appendChild(opcion);
     });
+}
+
+document.querySelectorAll("[data-product-filter], [data-catalog-preset]").forEach(link => {
+    link.addEventListener("click", () => {
+        aplicarPreseleccionCatalogo(link.dataset.productFilter || link.dataset.catalogPreset);
+    });
+});
+
+const filtroGenero = document.getElementById("filter-gender");
+const filtroMarca = document.getElementById("filter-brand");
+const filtroDisponible = document.getElementById("filter-available");
+
+if (filtroGenero) filtroGenero.addEventListener("change", () => {
+    filtrosCatalogo.categoria = filtroGenero.value;
+    actualizarCatalogo();
+});
+
+if (filtroMarca) filtroMarca.addEventListener("change", () => {
+    filtrosCatalogo.marca = filtroMarca.value;
+    actualizarCatalogo();
+});
+
+if (filtroDisponible) filtroDisponible.addEventListener("change", () => {
+    filtrosCatalogo.disponible = filtroDisponible.checked;
+    actualizarCatalogo();
 });
 
 const limpiarFiltroCatalogo = document.getElementById("clear-catalog-filter");
 if (limpiarFiltroCatalogo) {
     limpiarFiltroCatalogo.addEventListener("click", () => {
-        filtroCatalogo = null;
-        actualizarEstadoFiltroCatalogo();
-        mostrarProductos();
+        aplicarPreseleccionCatalogo("");
     });
 }
+
+crearExploracionPorMarca();
+actualizarOpcionesFiltro();
+actualizarEstadoFiltroCatalogo();
+
+const filtrosToggle = document.getElementById("catalog-filters-toggle");
+const filtrosPanel = document.getElementById("catalog-filters");
+
+if (filtrosToggle && filtrosPanel) {
+    filtrosToggle.addEventListener("click", () => {
+        const abierto = filtrosPanel.classList.toggle("is-open");
+        filtrosToggle.setAttribute("aria-expanded", String(abierto));
+    });
+}
+
+// ========================================
+// DETALLE DE PRODUCTO
+// ========================================
+
+const detalleProducto = document.getElementById("product-detail");
+const detalleProductoBackdrop = document.querySelector(".product-detail-backdrop");
+const cerrarDetalleProducto = document.querySelector(".product-detail-close");
+let ultimoFocoDetalle = null;
+
+function cerrarDetalleDeProducto() {
+    if (!detalleProducto) return;
+
+    detalleProducto.classList.remove("is-open");
+    detalleProducto.setAttribute("aria-hidden", "true");
+    if (detalleProductoBackdrop) detalleProductoBackdrop.hidden = true;
+    document.body.classList.remove("product-detail-open");
+    if (ultimoFocoDetalle) ultimoFocoDetalle.focus();
+}
+
+function verDetalleProducto(nombreProducto) {
+    const producto = productos.find(producto => producto.nombre === nombreProducto);
+    const contenido = detalleProducto?.querySelector(".product-detail-content");
+    if (!producto || !detalleProducto || !contenido) return;
+
+    const disponible = producto.stock > 0;
+    contenido.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <p class="product-brand">${producto.marca}</p>
+        <h3>${producto.nombre}</h3>
+        <dl class="product-detail-list">
+            <div><dt>Género</dt><dd>${traducir(producto.categoria)}</dd></div>
+            <div><dt>Precio</dt><dd>$${producto.precio.toLocaleString("es-CO")} COP</dd></div>
+            <div><dt>Disponibilidad</dt><dd class="${disponible ? "stock-disponible" : "stock-agotado"}">${disponible ? `${traducir("product_available")}: ${producto.stock}` : traducir("product_sold_out")}</dd></div>
+        </dl>
+    `;
+
+    const boton = document.createElement("button");
+    boton.className = disponible ? "btn-product" : "btn-product btn-agotado";
+    boton.disabled = !disponible;
+    boton.textContent = disponible ? traducir("buy") : traducir("product_sold_out");
+    if (disponible) {
+        boton.addEventListener("click", () => comprarProducto(boton, producto.nombre));
+    }
+    contenido.appendChild(boton);
+
+    ultimoFocoDetalle = document.activeElement;
+    detalleProducto.classList.add("is-open");
+    detalleProducto.setAttribute("aria-hidden", "false");
+    if (detalleProductoBackdrop) detalleProductoBackdrop.hidden = false;
+    document.body.classList.add("product-detail-open");
+    if (cerrarDetalleProducto) cerrarDetalleProducto.focus();
+}
+
+if (cerrarDetalleProducto) cerrarDetalleProducto.addEventListener("click", cerrarDetalleDeProducto);
+if (detalleProductoBackdrop) detalleProductoBackdrop.addEventListener("click", cerrarDetalleDeProducto);
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && detalleProducto?.classList.contains("is-open")) {
+        cerrarDetalleDeProducto();
+    }
+});
 
 // ========================================
 // ORDEN DE LA COLECCION
@@ -1719,6 +1895,7 @@ function changeLanguage(language) {
     // ----------------------------------------
 
     mostrarProductos();
+    actualizarEstadoFiltroCatalogo();
 
 
     // ----------------------------------------

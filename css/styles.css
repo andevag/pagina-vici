@@ -144,12 +144,27 @@ body.cart-open { overflow: hidden; }
 .sort-select:focus-visible { border-color: var(--champagne); box-shadow: 0 0 0 3px rgba(195, 155, 98, .18); outline: none; }
 .catalog-filter-status { align-items: center; color: var(--muted); display: flex; font-size: .84rem; gap: 12px; justify-content: space-between; margin: 0 auto 22px; max-width: 1240px; }
 .catalog-filter-status button { background: transparent; border: 0; color: #76562e; cursor: pointer; font: 600 .76rem var(--sans); letter-spacing: .03em; text-decoration: underline; }
+.catalog-browse { border-bottom: 1px solid var(--line); margin: 0 auto 26px; max-width: 1240px; padding-bottom: 26px; text-align: center; }
+.catalog-browse-label { color: #9d7743; font-size: .7rem; font-weight: 700; letter-spacing: .16em; margin-bottom: 12px; text-transform: uppercase; }
+.catalog-browse-links, .catalog-brands { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.catalog-brands { margin-top: 8px; }
+.catalog-browse button { background: transparent; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); cursor: pointer; font: 600 .76rem var(--sans); padding: 8px 13px; transition: background .2s ease, border-color .2s ease; }
+.catalog-browse button:hover, .catalog-browse button:focus-visible { background: var(--champagne-soft); border-color: var(--champagne); }
+.catalog-tools { margin: 0 auto 18px; max-width: 1240px; }
+.catalog-filters { align-items: end; background: var(--card); border: 1px solid var(--line); border-radius: var(--radio-suave); display: flex; gap: 14px; padding: 14px; }
+.catalog-filter-field { display: grid; gap: 6px; }
+.catalog-filter-field label, .catalog-stock-filter { color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.catalog-filter-field select { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font: 500 .85rem var(--sans); min-width: 165px; padding: 9px 11px; }
+.catalog-stock-filter { align-items: center; display: inline-flex; gap: 8px; min-height: 38px; }
+.catalog-stock-filter input { accent-color: var(--champagne); height: 16px; width: 16px; }
+.catalog-filters-toggle { display: none; }
 @media (max-width: 560px) { .sort-bar { justify-content: space-between; } .sort-select { flex: 1; } }
 .product-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radio); padding: 14px; position: relative; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease, opacity .7s ease; }
 .product-card:hover { border-color: var(--champagne); box-shadow: var(--sombra-suave); transform: translateY(-6px); }
 .product-card img { background: linear-gradient(160deg, #f1ece3, #e9e2d6); border-radius: 12px; height: 270px; margin-bottom: 16px; object-fit: contain; padding: 18px; width: 100%; transition: transform .25s ease; }
 .product-card:hover img { transform: scale(1.03); }
 .product-card h3 { font: 600 1.5rem/1.05 var(--serif); padding: 0 6px; }
+.product-brand { color: #9d7743; font-size: .68rem; font-weight: 700; letter-spacing: .11em; margin: 9px 6px 0; text-transform: uppercase; }
 .type-product { color: var(--muted); font-size: .68rem; letter-spacing: .14em; margin: 8px 6px 10px; text-transform: uppercase; }
 .product-price { font-size: 1rem; font-weight: 700; margin: 0 6px 14px; }
 .product-stock { font-size: .74rem; margin: 0 6px 14px; }
@@ -157,6 +172,24 @@ body.cart-open { overflow: hidden; }
 .btn-product { background: var(--ink); border-radius: 10px; color: white; display: inline-block; padding: 12px 16px; width: 100%; }
 .btn-product:hover { background: var(--champagne); color: var(--ink); transform: translateY(-2px); }
 .btn-agotado { background: var(--line); color: var(--muted); cursor: not-allowed; }
+.product-details { background: transparent; border: 0; color: #76562e; cursor: pointer; font: 600 .75rem var(--sans); margin: 0 6px 12px; padding: 0; text-decoration: underline; }
+
+/* Detalle de producto */
+.product-detail-backdrop { background: rgba(28, 26, 23, .38); inset: 0; position: fixed; z-index: 29; }
+.product-detail { background: var(--surface); box-shadow: -18px 0 46px rgba(28, 26, 23, .16); display: flex; flex-direction: column; height: 100dvh; max-width: 460px; position: fixed; right: 0; top: 0; transform: translateX(105%); transition: transform .28s ease; width: min(100%, 460px); z-index: 30; }
+.product-detail.is-open { transform: translateX(0); }
+.product-detail-head { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 22px 24px; }
+.product-detail-head h2 { font: 600 2rem var(--serif); }
+.product-detail-close { align-items: center; background: transparent; border: 0; color: var(--muted); cursor: pointer; display: inline-flex; font: 600 .74rem var(--sans); gap: 7px; letter-spacing: .07em; text-transform: uppercase; }
+.product-detail-close span { font-size: 1.5rem; font-weight: 400; line-height: .7; }
+.product-detail-content { overflow-y: auto; padding: 24px; }
+.product-detail-content > img { background: linear-gradient(160deg, #f1ece3, #e9e2d6); border-radius: var(--radio-suave); height: 310px; object-fit: contain; padding: 18px; width: 100%; }
+.product-detail-content h3 { font: 600 2.5rem/.95 var(--serif); margin: 8px 6px 22px; }
+.product-detail-list { border-top: 1px solid var(--line); display: grid; margin: 0 6px 24px; }
+.product-detail-list div { align-items: baseline; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 12px 0; }
+.product-detail-list dt { color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.product-detail-list dd { font-size: .9rem; font-weight: 600; text-align: right; }
+body.product-detail-open { overflow: hidden; }
 
 /* 03 ASISTENTE DE RECOMENDACIONES */
 .assistant { background: var(--paper); }
@@ -254,6 +287,10 @@ body.cart-open { overflow: hidden; }
     .nav-links { display: none; }
     .logo-mark { height: 54px; width: 54px; }
     .logo-name { font-size: .9rem; }
+    .catalog-filters-toggle { background: var(--ink); border: 0; border-radius: 9px; color: white; cursor: pointer; display: block; font: 600 .78rem var(--sans); letter-spacing: .05em; padding: 11px 14px; width: 100%; }
+    .catalog-filters { display: none; flex-direction: column; align-items: stretch; margin-top: 10px; }
+    .catalog-filters.is-open { display: flex; }
+    .catalog-filter-field select { width: 100%; }
     .hero { flex-direction: column; padding-top: 145px; text-align: center; }
     .hero-content p { margin-left: auto; margin-right: auto; }
     .hero-image { max-width: 400px; width: min(100%, 400px); }
@@ -283,6 +320,8 @@ body.cart-open { overflow: hidden; }
     .hero-content h2 { font-size: 3.2rem; }
     .products, .benefits, .assistant { padding-left: 18px; padding-right: 18px; }
     .cart-panel-head, .cart-panel-content { padding-left: 18px; padding-right: 18px; }
+    .product-detail-head, .product-detail-content { padding-left: 18px; padding-right: 18px; }
+    .product-detail-content > img { height: 260px; }
     .benefits-container { grid-template-columns: 1fr; }
     .cart-item { align-items: flex-start; flex-wrap: wrap; }
     .cart-remove { margin-left: auto; }
